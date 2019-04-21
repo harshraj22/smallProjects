@@ -9,7 +9,7 @@ int check_col();
 int check_row();
 int check_diag_l();
 int check_diag_r();
-
+#define RAND_VAL 100
 
 int main(){
 	int turn,j,k;
@@ -32,8 +32,12 @@ int main(){
 		if(k>=0){
                 printf("Result : ");
 			k==0?printf("%s won\n",pl1):printf("%s won\n",pl2);
+			break;
 		}
-
+		else if(k==-2){
+            printf("well played %s and %s . Game draw !\n",pl1,pl2);
+            break;
+            }
 	}
 	return 0;
 }
@@ -50,7 +54,7 @@ int check_matrix(){
 		return check_diag_r();
     for(int row=0;row<5;row++){
         for(int col=1;col<6;col++){
-            if(matrix[row][col]==100)
+            if(matrix[row][col]==RAND_VAL)
                 return -1;
         }
     }
@@ -93,7 +97,7 @@ int check_diag_l(){
 	return -1;
 }
 
-int check_diag_r(){			
+int check_diag_r(){		
 	for(int row =0;row < 2;row++){
 		for(int col=5;col >3 ;col--){
 			int k=matrix[row][col]+matrix[row+1][col-1]+matrix[row+2][col-2]+matrix[row+3][col-3];
@@ -111,9 +115,9 @@ int show_matrix(){
 	for(row=0;row<5;row++){
 		for(col=1;col<6;col++){
 			if(matrix[row][col]==1)
-				printf("%s ",pl2);
+				printf("%3.3s ",pl2);
 			else if(matrix[row][col]==0)
-				printf("%s ",pl1);
+				printf("%3.3s ",pl1);
 			else printf("___ ");
 		}
 		printf("\n");
@@ -124,7 +128,7 @@ int show_matrix(){
 int set_matrix(){
 	for(int i=0;i<5;i++){
 		for(int j=0;j<6;j++)
-			matrix[i][j]=100;
+			matrix[i][j]=RAND_VAL;
 	}
 	return 0;
 }
@@ -133,7 +137,7 @@ int add_matrix(int col, int val){
 	if(col<1 || col>5)
 		return 0;
 	for(int row=4;row>=0;row--){
-		if(matrix[row][col]==100){
+		if(matrix[row][col]==RAND_VAL){
 			matrix[row][col]=val;
 			return 1;
 		}
