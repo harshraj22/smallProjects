@@ -13,7 +13,7 @@ int check_diag_r();
 
 int main(){
 	int turn,j,k;
-	set_matrix(); 
+	set_matrix(); //sets the matrix with some random value(RAND_VAL in this case)
 
 	printf("Enter the first names of first and second player :\n");
 	scanf(" %s %s",pl1,pl2);
@@ -28,7 +28,7 @@ int main(){
 		}
 		show_matrix();
 		printf("\n");
-		k=check_matrix();	
+		k=check_matrix();	//checks if some player won
 		if(k>=0){
                 printf("Result : ");
 			k==0?printf("%s won\n",pl1):printf("%s won\n",pl2);
@@ -85,7 +85,7 @@ int check_row(){
 	return -1;
 }
 
-int check_diag_l(){		
+int check_diag_l(){		//cheks if player won due to four consecutive matches in a diagonal
 	for(int row=0;row<2;row++){
 		for(int col=1;col<3;col++){
 			int k=matrix[row][col]+matrix[row+1][col+1]+matrix[row+2][col+2]+matrix[row+3][col+3];
@@ -97,7 +97,7 @@ int check_diag_l(){
 	return -1;
 }
 
-int check_diag_r(){		
+int check_diag_r(){		//cheks if player won due to four consecutive matches in a diagonal ( the other way )
 	for(int row =0;row < 2;row++){
 		for(int col=5;col >3 ;col--){
 			int k=matrix[row][col]+matrix[row+1][col-1]+matrix[row+2][col-2]+matrix[row+3][col-3];
@@ -144,3 +144,4 @@ int add_matrix(int col, int val){
 	}
 	return 0;
 }
+
