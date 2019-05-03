@@ -62,3 +62,47 @@ void load_student_data(){	// loading all the student data to list from txt file
 		fseek(fp2,ftell(fp1),SEEK_SET);	// move reference pointer to the end of the current student details
 	}
 }
+
+void modify_student(int roll, char c){
+	struct student *s2, *s1, *s = first_student;
+	while(s->next_student!=NULL && s->roll!=roll)
+		s = s->next_student;
+	if(s->roll != roll){
+		printf("The roll doesn't exists \n");
+		return ;
+	}
+	if(c == 'm')	// if strudent details is to be updated 
+		update_student_profile(s, roll);
+
+	else {		// if student profile is to be deleted 
+		if(first_student->roll == roll){	// if the profile to be deleted is starting item
+			s = first_student;
+			first_student = first_student->next_student;
+		}
+		else {		// profile to be deleted lies somewhere in between 
+			s1 = first_student;
+			while(s1 -> next_student != s)	// find parent node to the node of profile to be deleted
+				s1 = s1->next_student;
+			s1->next_student = s->next_student;
+		}
+		free(s);
+	}
+
+}
+
+void create_student_profile(int roll){
+struct student *s2, * s1 = (struct student *)calloc(1, sizeof(struct student));
+	if(first_student==NULL){
+		first_student=s1;
+		return ;
+	}
+	s2 = first_student;
+	while(s2->next_student!=NULL){
+		if(s2->roll == roll){
+			printf("The student already exists\n");
+			return ;
+		}
+		s2= s2->next_student;
+	}
+	s2->next_student=s1;
+}
