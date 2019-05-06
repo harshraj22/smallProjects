@@ -106,3 +106,46 @@ struct student *s2, * s1 = (struct student *)calloc(1, sizeof(struct student));
 	}
 	s2->next_student=s1;
 }
+
+void update_student_profile(struct student * s, int roll){
+	s->roll = roll;
+
+	printf("enter student first name : \n");
+	scanf(" %s",(s->name));
+
+	printf("enter student branch : \n");
+	scanf(" %s",(s->branch));
+
+	printf("enter student semester : \n");
+	scanf(" %d",&(s->semester));
+
+	printf("enter no of courses : \n");
+	scanf(" %d",&(s->no_of_course));
+
+	s->course = (char **)calloc(s->no_of_course,sizeof(char *));
+	for(int i=0;i<(s->no_of_course);i++){
+		printf("Enter course %d : \n",i+1);
+		s->course[i] = (char *)calloc(MAX,sizeof(char ));
+		scanf("%s",s->course[i]);
+	}
+	printf("\n");
+}
+
+ void update_student_file(){	// saving all the changes to the txt file 
+	FILE * fp = fopen("student_file.txt","w+");
+	struct student * s = first_student;
+	while(s!=NULL){
+		fseek(fp,-1,SEEK_END);
+		fprintf(fp, "%d\n", s->roll);
+		fprintf(fp, "%s\n", s->name);
+		fprintf(fp, "%s\n", s->branch);
+		fprintf(fp, "%d\n", s->semester);
+		fprintf(fp, "%d\n", s->no_of_course);
+		for(int i=1;i<=(s->no_of_course);i++){
+			fprintf(fp, "%s\n", s->course[i-1]);
+		}
+		fprintf(fp , "\n\n");
+		s = s->next_student;
+	}
+	fclose(fp);
+}
