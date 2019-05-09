@@ -149,3 +149,31 @@ void update_student_profile(struct student * s, int roll){
 	}
 	fclose(fp);
 }
+
+void show_all_student(){
+	struct student * s = first_student;
+	while(s!=NULL){
+		show_student(s);
+		s = s->next_student;
+	}
+}
+
+void show_student(struct student * s){
+		printf("Roll : %d\n", s->roll);
+		printf("Name : %s\n", s->name);
+		printf("Branch : %s\n", s->branch);
+		printf("Semester : %d\n", s->semester);
+		printf("Courses : \n\t");
+		for(int i=0;i<(s->no_of_course);i++)
+			printf("%s  ", s->course[i]);
+		printf("\n\n");
+}
+
+void display_student(int roll){
+	struct student * s = first_student;
+	while(s!=NULL && s->roll != roll)
+		s = s->next_student;
+	if(s == NULL)
+		printf("The roll doesn\'t exists \n");
+	else show_student(s);
+}
