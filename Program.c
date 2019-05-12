@@ -200,3 +200,30 @@ void load_instructor_data(){	// loading all the instructor data to list from txt
 		fseek(fp2,ftell(fp1),SEEK_SET);	// move reference pointer to the end of the current instructor details
 	}
 }
+
+void modify_instructor(int id, char c){
+	struct instructor *s2, *s1, *s = first_instructor;
+	while(s->next_instructor!=NULL && s->id!=id)
+		s = s->next_instructor;
+	if(s->id != id){
+		printf("The id doesn't exists \n");
+		return ;
+	}
+	if(c == 'm')	// if instructor details is to be updated 
+		update_instructor_profile(s, id);
+
+	else {		// if instructor profile is to be deleted 
+		if(first_instructor->id == id){	// if the profile to be deleted is starting item
+			s = first_instructor;
+			first_instructor = first_instructor->next_instructor;
+		}
+		else {		// profile to be deleted lies somewhere in between 
+			s1 = first_instructor;
+			while(s1 -> next_instructor != s)	// find parent node to the node of profile to be deleted
+				s1 = s1->next_instructor;
+			s1->next_instructor = s->next_instructor;
+		}
+		free(s);
+	}
+
+}
