@@ -177,3 +177,26 @@ void display_student(int roll){
 		printf("The roll doesn\'t exists \n");
 	else show_student(s);
 }
+
+void load_instructor_data(){	// loading all the instructor data to list from txt file
+	FILE * fp1 , * fp2;
+	fp1 = fopen("instructor_file.txt", "a+");
+	fp2 = fopen("instructor_file.txt", "a+");
+	int i;
+	while(fscanf(fp1,"%d",&i)!=-1){		// While an integer(id number) is successfully read
+		fseek(fp1,ftell(fp2),SEEK_SET);	// seek back to read the id again
+		create_instructor_profile(-1);
+		struct instructor * s = first_instructor;
+		while(s->next_instructor!= NULL)
+			s = s->next_instructor;
+	fscanf(fp1,"%d",&(s->id));
+	fscanf(fp1," %s",(s->name));
+	fscanf(fp1," %d",&(s->no_of_course));
+		s->course = (char **)calloc(s->no_of_course,sizeof(char *));
+		for(int i=0;i<(s->no_of_course);i++){
+			s->course[i] = (char *)calloc(MAX,sizeof(char ));
+			fscanf(fp1,"%s",s->course[i]);
+		}
+		fseek(fp2,ftell(fp1),SEEK_SET);	// move reference pointer to the end of the current instructor details
+	}
+}
