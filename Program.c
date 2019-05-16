@@ -259,4 +259,20 @@ void update_instructor_profile(struct instructor * s, int id){
 		s->course[i] = (char *)calloc(MAX,sizeof(char ));
 		scanf("%s",s->course[i]);
 	}
-	
+}	
+ void update_instructor_file(){	// saving all the changes to the txt file 
+	FILE * fp = fopen("instructor_file.txt","w+");
+	struct instructor * s = first_instructor;
+	while(s!=NULL){
+		fseek(fp,-1,SEEK_END);
+		fprintf(fp, "%d\n", s->id);
+		fprintf(fp, "%s\n", s->name);
+		fprintf(fp, "%d\n", s->no_of_course);
+		for(int i=1;i<=(s->no_of_course);i++){
+			fprintf(fp, "%s\n", s->course[i-1]);
+		}
+		fprintf(fp , "\n\n");
+		s = s->next_instructor;
+	}
+	fclose(fp);
+}
