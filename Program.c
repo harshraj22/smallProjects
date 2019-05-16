@@ -227,3 +227,20 @@ void modify_instructor(int id, char c){
 	}
 
 }
+
+void create_instructor_profile(int id){
+struct instructor *s2, * s1 = (struct instructor *)calloc(1, sizeof(struct instructor));
+	if(first_instructor==NULL){
+		first_instructor=s1;
+		return ;
+	}
+	s2 = first_instructor;
+	while(s2->next_instructor!=NULL){
+		if(s2->id == id){
+			printf("The instructor already exists\n");
+			return ;
+		}
+		s2= s2->next_instructor;
+	}
+	s2->next_instructor=s1;
+}
