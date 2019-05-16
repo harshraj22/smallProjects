@@ -244,3 +244,19 @@ struct instructor *s2, * s1 = (struct instructor *)calloc(1, sizeof(struct instr
 	}
 	s2->next_instructor=s1;
 }
+void update_instructor_profile(struct instructor * s, int id){
+	s->id = id;
+
+	printf("enter instructor first name : \n");
+	scanf(" %s",(s->name));
+
+	printf("enter no of courses : \n");
+	scanf(" %d",&(s->no_of_course));
+
+	s->course = (char **)calloc(s->no_of_course,sizeof(char *));
+	for(int i=0;i<(s->no_of_course);i++){
+		printf("Enter course %d : \n",i+1);
+		s->course[i] = (char *)calloc(MAX,sizeof(char ));
+		scanf("%s",s->course[i]);
+	}
+	
