@@ -11,14 +11,14 @@ int check_diag_l();
 int check_diag_r();
 #define RAND_VAL 100
 
-int main(){
+int main(int argc, char ** argv){
 	int turn,j,k;
 	set_matrix(); //sets the matrix with some random value(RAND_VAL in this case)
 
 	printf("Enter the first names of first and second player :\n");
 	scanf(" %s %s",pl1,pl2);
 	printf("\n\n");
-	printf("now enter the columns :\n");
+	printf("now enter the columns to be occupied [1-5] :\n");
 	for(turn=0; ;turn++){
 		turn%2==0?printf("%s\'s turn : \n",pl1):printf("%s\'s turn : \n",pl2);
 		scanf(" %d",&k);
@@ -144,4 +144,3 @@ int add_matrix(int col, int val){
 	}
 	return 0;
 }
-
