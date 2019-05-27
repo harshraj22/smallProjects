@@ -31,3 +31,5 @@ A C program to play Four In A Row game.
         * In this version of game, there are 5 rows and 5 columns. The player has to pick a column that isn't full. The lowest empty space in that column will be occupied by him.
         * The first player to occupy any 4 consecutive places in any 8 possible direction wins. 
         * In case of tie, no player is declared winner.
+        
+![Game_final](https://user-images.githubusercontent.com/46635452/58410556-08a22200-8090-11e9-98c7-421f6571e0c3.png)
