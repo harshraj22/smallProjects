@@ -1,7 +1,7 @@
 # Four_In_A_Row
-A C program to play Four In A Row game. 
+A C program to play Four In A Row game. [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues) 
 
-## How To Play : ❓
+## How To Play : 🤔❓
 
  #### 1. Setup :
   ##### 1.1 Download Game.c file  ⬇️
