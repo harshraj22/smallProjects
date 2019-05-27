@@ -29,10 +29,10 @@ A C program to play Four In A Row game.
  #### 2. Play : ▶️
  ![Game_initial](https://user-images.githubusercontent.com/46635452/58410401-c5e04a00-808f-11e9-9509-5f8590f6f78e.png)
    * The game requires two players who have to enter their name after executing the object file. The first three letters of their name should be diffrent to avoid confusion.
-     ##### 2.1 Rules :
+     ##### 2.1 Rules : 📜📜
         * The first player to enter name takes first turn and then both play alternate turns. 
         * In this version of game, there are 5 rows and 5 columns. The player has to pick a column that isn't full. The lowest empty space in that column will be occupied by him.
         * The first player to occupy any 4 consecutive places in any 8 possible direction wins. 
         * In case of tie, no player is declared winner.
-        
+        * Compete among yourselves and have fun . ✌️😊
 ![Game_final](https://user-images.githubusercontent.com/46635452/58410556-08a22200-8090-11e9-98c7-421f6571e0c3.png)
