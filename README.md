@@ -4,7 +4,7 @@ A C program to play Four In A Row game.
 ## How To Play : ❓
 
  #### 1. Setup :
-  ##### 1.1 Download Game.c file ⬇️
+  ##### 1.1 Download Game.c file  ⬇️
   * Download the file by using the given command ```git clone https://github.com/harshraj22/four_in_a_row.git ``` . This creates a local coppy of this git repository on your local machine. Now move to created directory by typing ``` cd four_in_a_row ```
   
   :champagne: 🎉🎉 Congrats !! You successfully installed the file to your local repository .
@@ -17,7 +17,7 @@ A C program to play Four In A Row game.
 * Now once the object file is created, simply execute your object file using ```./a.out```. This commands excecutes an executable file named a.out in current directory.
 * The details of playing are provided [below](####-2.-play-). In case you like the game but don't like to go the specific directory every time to compile and execute, you may add the compiled object file to the path of environment variables. Follow the below steps for the same : 
     
-    #### 1.1 Make the game accessible from any directory :
+    #### 1.1 Make the game accessible from any directory : 📂
     * Compile Game.c file using the steps explained above using a name other than a.out . The other name is important so that in future if you compile and run some other code, your machine is not confused as which a.out should be executed. 
     * Run the following command ```sudo mv FILE_NAME /usr/bin/``` and then enter your password if required. This basically moves your object file to a directory named bin where many globally accessible executable files are stored. 
     * Now you can execute your object file from any location by just typing FILE_NAME on your command line.
