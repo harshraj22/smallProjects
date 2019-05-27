@@ -1,5 +1,5 @@
 # Four_In_A_Row
-A C program to play Four In A Row game. [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues) 
+A C program to play Four In A Row game. [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues) [![Open Source Love png2](https://badges.frapsoft.com/os/v2/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
 ## How To Play : 🤔❓
 
@@ -31,7 +31,7 @@ A C program to play Four In A Row game. [![MIT license](https://img.shields.io/b
    * The game requires two players who have to enter their name after executing the object file. The first three letters of their name should be diffrent to avoid confusion.
      ##### 2.1 Rules : 📜📜
         * The first player to enter name takes first turn and then both play alternate turns. 
-        * In this version of game, there are 5 rows and 5 columns. The player has to pick a column that isn't full. The lowest empty space in that column will be occupied by him.
+        * In this version of game, there are 5 rows and 5 columns. The player has to pick a column that isn't full. The lowest empty space in that column will be occupied by him. 
         * The first player to occupy any 4 consecutive places in any 8 possible direction wins. 
         * In case of tie, no player is declared winner.
         * Compete among yourselves and have fun . ✌️😊
