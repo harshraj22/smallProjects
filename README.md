@@ -1,5 +1,6 @@
 # Four_In_A_Row
 A C program to play Four In A Row game. 
+![Game_initial](https://user-images.githubusercontent.com/46635452/58410401-c5e04a00-808f-11e9-9509-5f8590f6f78e.png)
 
 ## How To Play : 
 
