@@ -4,7 +4,10 @@ A C program to play Four In A Row game.
 ## How To Play : 
 
  #### 1. Setup :
-* Download Game.c file 
+  ##### 1.1 Download Game.c file ⬇️
+  * Download the file by using the given command ```git clone https://github.com/harshraj22/four_in_a_row.git ``` . This creates a local coppy of this git repository on your local machine. Now move to created directory by typing ``` cd four_in_a_row ```
+  
+  :champagne: 🎉🎉 Congrats !! You successfully installed the file to your local repository .
 * Compile on linux machine using gcc compiler by running the command
 ```  gcc Game.c  ```
   * In case you get error like ```gcc not found, but can be installed with ...``` run the following command
@@ -23,7 +26,7 @@ A C program to play Four In A Row game.
     
     
     
- #### 2. Play :
+ #### 2. Play : ▶️
  ![Game_initial](https://user-images.githubusercontent.com/46635452/58410401-c5e04a00-808f-11e9-9509-5f8590f6f78e.png)
    * The game requires two players who have to enter their name after executing the object file. The first three letters of their name should be diffrent to avoid confusion.
      ##### 2.1 Rules :
