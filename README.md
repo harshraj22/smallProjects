@@ -1,7 +1,7 @@
 # Four_In_A_Row
 A C program to play Four In A Row game. 
 
-## How To Play : 
+## How To Play : ❓
 
  #### 1. Setup :
   ##### 1.1 Download Game.c file ⬇️
