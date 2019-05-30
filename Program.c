@@ -293,3 +293,12 @@ void show_instructor(struct instructor * s){
 			printf("%s  ", s->course[i]);
 		printf("\n\n");
 }
+
+void display_instructor(int id){
+	struct instructor * s = first_instructor;
+	while(s!=NULL && s->id != id)
+		s = s->next_instructor;
+	if(s == NULL)
+		printf("The id doesn\'t exists \n");
+	else show_instructor(s);
+}
