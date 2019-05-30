@@ -276,3 +276,11 @@ void update_instructor_profile(struct instructor * s, int id){
 	}
 	fclose(fp);
 }
+
+void show_all_instructor(){
+	struct instructor * s = first_instructor;
+	while(s!=NULL){
+		show_instructor(s);
+		s = s->next_instructor;
+	}
+}
