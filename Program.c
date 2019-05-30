@@ -284,3 +284,12 @@ void show_all_instructor(){
 		s = s->next_instructor;
 	}
 }
+
+void show_instructor(struct instructor * s){
+		printf("id : %d\n", s->id);
+		printf("Name : %s\n", s->name);
+		printf("Courses : \n\t");
+		for(int i=0;i<(s->no_of_course);i++)
+			printf("%s  ", s->course[i]);
+		printf("\n\n");
+}
