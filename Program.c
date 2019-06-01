@@ -321,3 +321,28 @@ void create_course_profile(int code ){
 	c = c -> next_course;
 	c -> code = code;
 }
+
+
+void load_course_data(){	// loading all the course data to list from txt file
+	FILE * fp1 , * fp2;
+	fp1 = fopen("course_file.txt", "a+");
+	fp2 = fopen("course_file.txt", "a+");
+	int i;
+	while(fscanf(fp1,"%d",&i)!=-1){		// While an integer(course code number) is successfully read
+		fseek(fp1,ftell(fp2),SEEK_SET);	// seek back to read the course code again
+		create_course_profile(-1);
+		struct course * s = first_course;
+		while(s->next_course!= NULL)
+			s = s->next_course;
+	fscanf(fp1,"%d",&(s->code));
+	fscanf(fp1," %s",(s->name));
+	fscanf(fp1," %d",&(s->credits));
+	fscanf(fp1," %d",&(s->no_of_instructors));
+		s->instructor_ids = (char **)calloc(s->no_of_instructors,sizeof(char *));
+		for(int i=0;i<(s->no_of_instructors);i++){
+			s->instructor_ids[i] = (char *)calloc(MAX,sizeof(char ));
+			fscanf(fp1,"%s",s->instructor_ids[i]);
+		}
+		fseek(fp2,ftell(fp1),SEEK_SET);	// move reference pointer to the end of the current student details
+	}
+}
