@@ -302,3 +302,22 @@ void display_instructor(int id){
 		printf("The id doesn\'t exists \n");
 	else show_instructor(s);
 }
+
+void create_course_profile(int code ){
+	struct course * c = first_course;
+	if(first_course == NULL){
+		first_course = (struct course *)calloc(1, sizeof(struct course));
+		first_course -> code = code;
+		return ;
+	}
+	while(c -> next_course != NULL){
+		if(c -> code == code){
+			printf("The given code already exists\n");
+			return ;
+		}
+		c = c -> next_course;
+	}
+	c -> next_course = (struct course *)calloc(1, sizeof(struct course));
+	c = c -> next_course;
+	c -> code = code;
+}
