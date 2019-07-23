@@ -666,7 +666,7 @@ void check_course_availability(char * s){		// checks if the entered course is st
 		c = c-> next_course;
 	}
 	// in case the given course isn't found 
-	printf("The given course doesn't exist . Created a random one with code -1 , please modify accordingly .\n");
+	printf("The given course doesn't exist in the database. Created a random one with code -1 , please modify accordingly .\n");
 	c = first_course;
 	if(c != NULL){
 		while(c -> next_course != NULL)
