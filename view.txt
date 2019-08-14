@@ -1,7 +1,0 @@
-n:I can see a white house in the north and some light can be seen in west;
-nw:its just another trap ! path blocked *-*;
-nn:its a crossroad !!;
-nnw:run ! zombies are coming !!! @_@;
-nnn:nothing can be found on this blocked path;
-nne:only way visible is south <_>; 
-nnes:welcome home

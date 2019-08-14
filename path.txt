@@ -1,7 +1,0 @@
-n:north,west;
-nw:east;
-nn:south,north,east,west;
-nnw:east;
-nnn:south;
-nne:west,south;
-nnes:north
