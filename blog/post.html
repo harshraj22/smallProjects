@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Post</title>
+</head>
+<body>
+    <form action="post.php" method="POST" enctype="multipart/form-data">
+        <h3>Author : </h3>
+        <input type="text" name="author">
+        <h3>Title : </h3>
+        <input type="text" name="title">
+        <h3>Contents : </h3>
+        <input type="text" name="contents">
+        <h3>Date : </h3>
+        <!-- use date selector html -->
+        <input type="text" name="date">
+        <!-- use js to verify data before posting to php -->
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>
