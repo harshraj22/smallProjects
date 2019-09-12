@@ -36,6 +36,10 @@
         _END;
     }
 
+    echo <<< _END
 
+    <button type="submit" onclick="window.location.href= 'http://localhost:8080/blog/post.html'";>Post</button>
+
+    _END;
     mysqli_close($connection);
 ?>
