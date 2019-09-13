@@ -4,7 +4,7 @@
 
     echo <<< _END
         <!-- remove hardcoded links -->
-        <button type="submit" onclick="window.location.href= 'http://localhost:8080/blog/post.html'";>Post</button>
+        <button type="submit" onclick="window.location.href= 'http://localhost:8080/blog/validate.html'";>Post</button>
         <button type="submit" onclick="window.location.href= 'http://localhost:8080/blog/filter.html'";>Filter</button>
 
     _END;
@@ -64,9 +64,7 @@
 
     if($_GET['page'] != 0){
         echo <<< _END
-            <form action='blog.php' method='GET'>
-                <button type='submit' name='page' value=$prev>Prev</button>
-            </form>
+            <button onclick="window.history.back()">Prev</button>
         _END;
     }
 

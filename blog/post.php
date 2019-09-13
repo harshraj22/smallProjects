@@ -2,6 +2,11 @@
     require_once 'login.php';
     $connection = mysqli_connect($db_hostname,$db_user,$db_password,$db_database);
 
+    echo <<< _END
+        <!-- Do not hard-code link (the number of pages to go back) -->
+        <button onclick="window.history.go(-3)">Prev</button>
+    _END;
+
     if(!$connection)
         die('Error while posting.'.mysqli_connect_error());
     echo "Successfuly entered the database. <br/>";

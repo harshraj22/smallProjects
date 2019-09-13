@@ -3,6 +3,11 @@
     require_once 'login.php';
     $connection = mysqli_connect($db_hostname,$db_user,$db_password,$db_database);
 
+    echo <<< _END
+        <!-- Do not hard-code link , adjust for case when page is more than 1 (we don't need to go back just 2 pages) -->
+        <button onclick="window.history.go(-2)">Prev</button>
+    _END;
+
     if(!$connection){
         die('Couldnt connect to database. <br/>'.mysqli_connect_error($connection));
     }
@@ -58,6 +63,10 @@
                 <h6> Dated : $date <br/></h6>
             </div>
         _END;
+    }
+
+    if($numRows == 0){
+        echo "No data matched for this input <br/>";
     }
 
 ?>
