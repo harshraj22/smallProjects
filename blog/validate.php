@@ -1,10 +1,18 @@
 <?php
+    session_start();
     require_once 'login.php';
-    if(!isset($_POST['pass'])){
+    if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
+        echo "Welcome Admin.";
+        $_SESSION['loggedIn'] = true;
+        header("Location: http://localhost:8080/blog/post.html");
+        exit;        
+    }
+    else if(!isset($_POST['pass'])){
         echo "<script type='text/javascript'>alert('Enter Password !'); history.go(-2);</script>";        
     }
     else if($_POST['pass'] == $admin_password){
         echo "Welcome Admin.";
+        $_SESSION['loggedIn'] = true;
         header("Location: http://localhost:8080/blog/post.html");
         exit;
     }

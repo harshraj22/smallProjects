@@ -1,5 +1,6 @@
 <?php
 // add next and prev button, display only 5 posts per page (don't hardcode)
+    session_start();
     require_once 'login.php';
     $connection = mysqli_connect($db_hostname,$db_user,$db_password,$db_database);
 
@@ -26,7 +27,7 @@
         // echo $query."<br>";
     }
     else if(empty($_POST['author_name'])==true){
-        $query = "SELECT * FROM ".$db_table_posts." WHERE day = '".$_POST['post_date']."'";
+        $query = "SELECT * FROM {$db_table_posts} WHERE day = '{$_POST['post_date']}'";
         $result = mysqli_query($connection,$query);
         // if($result)
         //     echo "Searched <br/>";
@@ -34,7 +35,7 @@
         //     echo "was inside <br/>";
     }
     else {
-        $query = "SELECT * FROM ".$db_table_posts."WHERE day = '".$_POST['post_date']."' AND author = '".$_POST['author_name']."'";
+        $query = "SELECT * FROM {$db_table_posts} WHERE day = '{$_POST['post_date']}' AND author = '{$_POST['author_name']}'";
         $result = mysqli_query($connection,$query);
     }
 

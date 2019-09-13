@@ -1,5 +1,14 @@
 <?php
+    session_start();
     require_once 'login.php';
+
+    if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == false){
+        echo <<< _END
+            <script type="text/javascript">alert("You need to be logged in first"); window.location="http://localhost:8080/blog/validate.html";</script>
+        _END;
+            exit;
+    }
+
     $connection = mysqli_connect($db_hostname,$db_user,$db_password,$db_database);
 
     echo <<< _END
