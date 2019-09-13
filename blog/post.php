@@ -16,12 +16,28 @@
     $result = mysqli_query($connection,$query);
 
     if(!$result)
-        echo "Error saving the data.<br/>";
+        echo "Error saving the data.".mysqli_error($connection)."<br/>";
     else
         echo "Data successfully saved. <br/>";
+    
+    // $id = mysqli_query($connection,"SELECT LAST_INSERT_ID()");
 
-    echo $_POST['author']."<br/>";
-    echo $_POST['title']."<br/>";
-    echo $_POST['contents']."<br/>";
-    echo $_POST['date']."<br/>";
+    $id_query = "SELECT id FROM ". $db_table_posts."  ORDER BY id DESC LIMIT 1";
+    $id = mysqli_query($connection,$id_query);
+
+    if(!$id){
+        echo "query failed <br/>";
+        echo $id_query.mysqli_error($connection)."<br/>";
+        die('');
+    }
+    else{
+        echo "passed with primary key : ";
+        $res = mysqli_fetch_array($id);
+        echo $res[0]."<hr>";
+    }
+
+    echo "Author : ".$_POST['author']."<br/>";
+    echo "Title : ".$_POST['title']."<br/>";
+    echo "Contents : ".$_POST['contents']."<br/>";
+    echo "Dated : ".$_POST['date']."<br/>";
 ?>
