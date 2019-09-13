@@ -1,4 +1,5 @@
 <?php
+// add next and prev button, display only 5 posts per page (don't hardcode)
     require_once 'login.php';
     $connection = mysqli_connect($db_hostname,$db_user,$db_password,$db_database);
 
