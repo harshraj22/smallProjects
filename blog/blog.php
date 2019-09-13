@@ -2,7 +2,7 @@
     require_once 'login.php';
 
     echo <<< _END
-// remove hardcoded links
+        <!-- remove hardcoded links -->
         <button type="submit" onclick="window.location.href= 'http://localhost:8080/blog/post.html'";>Post</button>
         <button type="submit" onclick="window.location.href= 'http://localhost:8080/blog/filter.html'";>Filter</button>
 
