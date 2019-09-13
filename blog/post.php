@@ -24,16 +24,18 @@
     $title = $_POST['title'];
     $contents = $_POST['contents'];
     $date = $_POST['date'];
+    $pic = $_FILES['pic']['name'];
 
-    $query = "INSERT INTO ".$db_table_posts."(author,title,content,day) VALUES ('" . $author . "','" . $title . "','" . $contents . "','" . $date . "')";
+    $query = "INSERT INTO ".$db_table_posts."(author,title,content,day,id,pic) VALUES ('{$author}','{$title}','{$contents}','{$date}',NULL,'{$pic}')";
 
     $result = mysqli_query($connection,$query);
 
     if(!$result)
         echo "Error saving the data.".mysqli_error($connection)."<br/>";
-    else
+    else{
         echo "Data successfully saved. <br/>";
-    
+        
+    }
     // $id = mysqli_query($connection,"SELECT LAST_INSERT_ID()");
 
     $id_query = "SELECT id FROM ". $db_table_posts."  ORDER BY id DESC LIMIT 1";
@@ -48,6 +50,8 @@
         echo "passed with primary key : ";
         $res = mysqli_fetch_array($id);
         echo $res[0]."<hr>";
+        $path = "./pics/".$_FILES['pic']['name'];
+        move_uploaded_file($_FILES['pic']['tmp_name'],$path);
     }
 
     echo "Author : ".$_POST['author']."<br/>";

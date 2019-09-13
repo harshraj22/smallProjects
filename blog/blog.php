@@ -54,19 +54,21 @@
 
     for($i=0;$i < min($num_of_rows,$numOfPostPerPage);$i++){
         $rows = mysqli_fetch_row($query);
+
+        // print_r($rows);
  
         $author = $rows[0];
         $title = $rows[1];
         $content = $rows[2];
         $date = $rows[3];
         $pic = '';
-        if(isset($rows[4]))
-            $pic = $rows[4];
+        if(isset($rows[5]))
+            $pic = $rows[5];
 
         echo <<< _END
             <div>
                 <h1> <h4> $i. </h4> $title </h1>
-                <img href=$pic >
+                <img src="./pics/$pic" height='420' width='420'>
                 <h5> By : $author</h5>
                 <hr>
                 <h3> $content </h3>
