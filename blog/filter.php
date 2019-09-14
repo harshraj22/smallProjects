@@ -49,6 +49,9 @@
         $rows = mysqli_fetch_row($result);
 
         // print_r($rows)."<br/>";
+        $pic = '';
+        if(isset($rows[5]))
+            $pic = $rows[5];
 
         $author = $rows[0];
         $title = $rows[1];
@@ -58,6 +61,7 @@
         echo <<< _END
             <div>
                 <h1> $title </h1>
+                <img src="./pics/$pic" height='420' width='420'>
                 <h5> By : $author</h5>
                 <hr>
                 <h3> $content </h3>
