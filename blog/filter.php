@@ -22,7 +22,7 @@
         die("Empty data. <br/>");
     }
     else if(empty($_POST['post_date'])==true){
-        $query = "SELECT * FROM ".$db_table_posts." WHERE author = '".$_POST['author_name']."'";
+        $query = "SELECT * FROM {$db_table_posts} WHERE author = '{$_POST['author_name']}'";
         $result = mysqli_query($connection,$query);
         // echo $query."<br>";
     }

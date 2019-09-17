@@ -38,7 +38,7 @@
     }
     // $id = mysqli_query($connection,"SELECT LAST_INSERT_ID()");
 
-    $id_query = "SELECT id FROM ". $db_table_posts."  ORDER BY id DESC LIMIT 1";
+    $id_query = "SELECT id FROM {$db_table_posts}  ORDER BY id DESC LIMIT 1";
     $id = mysqli_query($connection,$id_query);
 
     if(!$id){
