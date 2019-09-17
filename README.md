@@ -12,4 +12,6 @@ This repo is ment for the Blog-website created using php-mysql
 - [x] Buttons for easy navigation
 - [x] Display less posts per page (reduce cluttering)
 - [x] Adding images to posts
+- [ ] Make some arrangement for posts with no images
 - [x] Store posts in database (mysql)
+- [ ] Add CSS and JS to make it usable
