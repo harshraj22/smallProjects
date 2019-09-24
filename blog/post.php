@@ -26,7 +26,7 @@
     $date = $_POST['date'];
     $pic = $_FILES['pic']['name'];
 
-    $query = "INSERT INTO ".$db_table_posts."(author,title,content,day,id,pic) VALUES ('{$author}','{$title}','{$contents}','{$date}',NULL,'{$pic}')";
+    $query = "INSERT INTO {$db_table_posts} (author,title,content,day,id,pic) VALUES ('{$author}','{$title}','{$contents}','{$date}',NULL,'{$pic}')";
 
     $result = mysqli_query($connection,$query);
 
@@ -38,7 +38,7 @@
     }
     // $id = mysqli_query($connection,"SELECT LAST_INSERT_ID()");
 
-    $id_query = "SELECT id FROM {$db_table_posts}  ORDER BY id DESC LIMIT 1";
+    $id_query = "SELECT id FROM {$db_table_posts} ORDER BY id DESC LIMIT 1";
     $id = mysqli_query($connection,$id_query);
 
     if(!$id){
