@@ -73,11 +73,14 @@
                 <h1> <h4> $i. </h4> $title </h1>
                 <img src="./pics/$pic" height='420' width='420'>
                 <h5> By : $author</h5>
-                <hr>
                 <h3> $content </h3>
                 <h6> Dated : $date <br/></h6>
-                             
+                <hr>                             
                 <form action='delete_post.php' method='post'>
+                    <input type="hidden" name="delete_author" value='$author'>
+                    <input type="hidden" name="delete_title" value='$title'>
+                    <input type="hidden" name="delete_content" value='$content'>
+                    <input type="hidden" name="delete_date" value='$date'>
                     <input type='submit' value="Delete">
                 </form>
             </div>
