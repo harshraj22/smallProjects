@@ -55,8 +55,6 @@
     for($i=0;$i < min($num_of_rows,$numOfPostPerPage);$i++){
         $rows = mysqli_fetch_row($query);
 
-        // print_r($rows);
- 
         $author = $rows[0];
         $title = $rows[1];
         $content = $rows[2];
@@ -64,6 +62,11 @@
         $pic = '';
         if(isset($rows[5]))
             $pic = $rows[5];
+
+        $_SESSION["delete_author"] = $author;
+        $_SESSION['delete_title'] = $title;
+        $_SESSION['delete_content'] = $content;
+        $_SESSION['delete_date'] = $date;
 
         echo <<< _END
             <div>
@@ -73,6 +76,10 @@
                 <hr>
                 <h3> $content </h3>
                 <h6> Dated : $date <br/></h6>
+                             
+                <form action='delete_post.php' method='post'>
+                    <input type='submit' value="Delete">
+                </form>
             </div>
         _END;
     }
