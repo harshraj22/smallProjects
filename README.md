@@ -5,7 +5,7 @@ This repo is ment for the Blog-website created using php-mysql
 ### Features :
 
 - [x] Can Add New Posts
-- [ ] Can delete old posts
+- [x] Can delete old posts
 - [x] Search posts by specific author/date
 - [x] Authentication for admin (Only admin can post)
 - [ ] Adding users that can post
