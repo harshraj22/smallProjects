@@ -4,7 +4,7 @@
     // echo "Hallo</br>";
 
     if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn']==false){
-        header("Location: http://localhost:8080/blog/validate.html");
+        header("Location: validate.html");
         exit;
     }
 

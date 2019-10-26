@@ -118,9 +118,6 @@
 
                 $query = mysqli_query($connection,"SELECT * FROM " . $db_table_posts . " ORDER BY id LIMIT {$start},1234567" );
 
-                // print_r($_GET)."<br/>";
-
-                // echo "Start and end are : ".$start." = ".$end." = ".$_GET['page']." / ".isset($_GET['page'])."<br/>";
 
                 if(!$query)
                     die('Some error occured while fetching data.'.mysqli_error($connection));
@@ -148,7 +145,7 @@
                         echo <<< _END
                             <div class="row">
                                 <div class="row m-3 text-center">
-                                    <h2> $i. $title : </h2>
+                                    <h2 class="text-center"> $i. $title : </h2>
                                 </div>
                                 <div class="row mx-3">
                                     <div class="col-4">

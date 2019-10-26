@@ -69,8 +69,8 @@
 						$row = mysqli_fetch_row($post_query_result);
 						// print_r($row);
 						echo <<< _END
-							<li class='list-group-item m-auto'>
-								<a href="#" class="p-auto stretched-link">{$row[1]}</a>
+							<li class='list-group-item text-left list-group-item-action'>
+								<a href="blog.php?page=0" class="p-auto text-info ">{$row[1]}</a>
 							</li>
 						_END;
 					}
@@ -79,6 +79,7 @@
 			?>
 		</div>
 		<!-- End list posts -->
+
 		<div class="col-md-8">
 		<!-- Corousel -->
 			<div class="bd-example">
