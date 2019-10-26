@@ -55,7 +55,6 @@
     <div class="jumbotron">
         <?php
         // add next and prev button, display only 5 posts per page (don't hardcode)
-            // session_start();
             require_once 'login.php';
             $connection = mysqli_connect($db_hostname,$db_user,$db_password,$db_database);
 
@@ -66,7 +65,7 @@
             $result = 0;
 
             if(empty($_POST['author_name'])==true && empty($_POST['post_date'])==true){
-                die("<br><h3>Empty data. </h3><br>");
+                die("<br><h3 class='text-center'>Empty data. </h3><br>");
             }
             else if(empty($_POST['post_date'])==true){
                 $query = "SELECT * FROM ".$db_table_posts." WHERE author = '".$_POST['author_name']."'";
