@@ -1,3 +1,7 @@
+<?php
+	session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,8 +41,34 @@
 					<a class="nav-link" href="blog.php?page=0">Blog <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="validate.html">Login</a>
-				</li>
+                    <?php
+                        if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
+                            echo <<< _END
+                                <a class="nav-link" href="logout.php">Logout</a>
+                            _END;
+                        }
+                        else{
+                            echo <<< _END
+                                <a class="nav-link" href="validate.html">Login</a>
+                            _END;
+                        }
+                    ?>
+                    <!-- <a class="nav-link" href="validate.html">Login</a> -->
+                </li>
+                <li class="nav-item">
+                    <?php
+                        if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
+                            echo <<< _END
+                                <a class="nav-link" href="validate.php">Post</a>
+                            _END;
+                        }
+                        else{
+                            echo <<< _END
+                                <a class="nav-link" href="validate.html">Post</a>
+                            _END;
+                        }
+                    ?>
+                </li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					  Dropdown
@@ -54,8 +84,8 @@
 					<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
 				</li>
 			</ul>
-			<form class="form-inline my-2 my-lg-0">
-				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+			<form class="form-inline my-2 my-lg-0" action="http://www.google.com">
+				<!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 			</form>
 		</div>

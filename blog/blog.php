@@ -66,8 +66,8 @@
                             </div>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="window.location.href='filter.html'">Filter</button>
+                <form class="form-inline my-2 my-lg-0" action="filter.html">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" action='filter.html'>Filter Posts</button>
                 </form>
             </div>
         </nav>
