@@ -4,7 +4,7 @@
     if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true){
         echo "Welcome Admin.";
         $_SESSION['loggedIn'] = true;
-        header("Location: http://localhost:8080/blog/post.html");
+        header("Location:  post.html");
         exit;        
     }
     else if(!isset($_POST['pass'])){
@@ -13,7 +13,7 @@
     else if($_POST['pass'] == $admin_password){
         echo "Welcome Admin.";
         $_SESSION['loggedIn'] = true;
-        header("Location: http://localhost:8080/blog/post.html");
+        header("Location:post.html");
         exit;
     }
     else {
