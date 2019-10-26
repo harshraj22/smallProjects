@@ -14,4 +14,4 @@ This repo is ment for the Blog-website created using php-mysql
 - [x] Adding images to posts
 - [ ] Make some arrangement for posts with no images
 - [x] Store posts in database (mysql)
-- [ ] Add CSS and JS to make it usable
+- [x] Add CSS and JS to make it usable
