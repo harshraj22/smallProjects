@@ -2,15 +2,16 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=, initial-scale=1.0">
+	<meta name="viewport" content="width=fit-content, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
 	<title>Document</title>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-		<a class="navbar-brand" href="#">Navbar</a>
+		<a class="navbar-brand" href="index.php">Home</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -18,10 +19,10 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active">
-					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="blog.php?page=0">Blog <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Link</a>
+					<a class="nav-link" href="validate.html">Login</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -55,7 +56,25 @@
 				if(!$conn)
 					echo "Some Error occured. <br>";
 				else{
-					echo "Fetching posts.<br>";
+					$post_query = "SELECT * FROM {$db_table_posts}";
+					$post_query_result = mysqli_query($conn, $post_query);
+
+					$num_of_rows = mysqli_num_rows($post_query_result);
+					// echo $num_of_rows;
+					echo "<ul class='list-group float-left mx-4'>";
+					if($num_of_rows > 0){
+						echo "<h3 class='mx-4 text-justify'><i class='fas fa-bookmark'></i> Recent Blogs : <br></h3> <hr>";
+					}
+					for($i=0;$i<min(7, $num_of_rows);$i++){
+						$row = mysqli_fetch_row($post_query_result);
+						// print_r($row);
+						echo <<< _END
+							<li class='list-group-item m-auto'>
+								<a href="#" class="p-auto stretched-link">{$row[1]}</a>
+							</li>
+						_END;
+					}
+					echo "</ul>";
 				}
 			?>
 		</div>
@@ -106,11 +125,11 @@
 		</div>
 	</div>
 <!--  -->
-	<div class="container">
+<!-- 	<div class="container">
 		<form action="blog.php" method="GET" enctype="multipart/form-data">
 			<button onclick="submit" name="page" value="0">Blog</button>
 		</form>
-	</div>
+	</div> -->
 
 
 
