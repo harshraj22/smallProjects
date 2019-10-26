@@ -10,6 +10,21 @@
 	<title>Document</title>
 </head>
 <body>
+
+	<style>
+		.footer {
+		  position: absolute;
+		  bottom: 0;
+		  width: 100%;
+		  height: 60px;
+		  /* Set the fixed height of the footer here */
+		  line-height: 60px;
+		  /* Vertically center the text there */
+		  background-color: #708090;
+		  /* Not required */
+		}
+	</style>
+
 	<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
 		<a class="navbar-brand" href="index.php">Home</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,7 +61,7 @@
 		</div>
 	</nav>
 
-	<div class="row">
+	<div class="row m-0">
 		<!-- To list recent posts -->
 		<div class="col-md-4">
 			<?php
@@ -125,6 +140,10 @@
 		<!-- Corousel End -->
 		</div>
 	</div>
+	<footer class="footer">
+		<p class="text-center">Facebook</p>
+	</footer>
+	
 <!--  -->
 <!-- 	<div class="container">
 		<form action="blog.php" method="GET" enctype="multipart/form-data">
