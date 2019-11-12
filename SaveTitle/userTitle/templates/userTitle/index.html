@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Index</title>
+</head>
+<body>
+	<h1>Insert Name And Title:</h1>
+
+	{% load staticfiles %}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'userTitle/index.css' %}">
+
+	<form action="{% url 'save' %}" method="POST" role="form">
+		{% csrf_token %}
+
+		{{ form.name }}
+		<br><br>
+		{{ form.title }}
+		<br><br>
+		<button type="submit">Save</button>
+		
+	</form>
+</body>
+</html>
