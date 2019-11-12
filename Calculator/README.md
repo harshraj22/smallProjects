@@ -2,6 +2,8 @@
 
 Online calculator built using ```Django``` as a stepping stone for learning Django. The calculation happens on Js side.
 
+  * Learnt about loading static files, urls and views. 
+
 > In case you want to help, see [issues](https://github.com/harshraj22/smallProjects/issues) section
 
 #### Screenshots :
