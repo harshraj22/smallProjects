@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User Registration</title>
+</head>
+<body>
+	{% if messages %}
+		{% for message in messages %}
+			{{ message }}
+		{% endfor %}
+	{% endif %}
+	<hr>
+	<form method="POST">
+		{% csrf_token %}
+		{{ form }}
+
+		<button type="submit">Add</button>
+	</form>
+</body>
+</html>

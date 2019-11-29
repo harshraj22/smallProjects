@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Index</title>
+</head>
+<body style="margin-left: 30px; margin-right: 1420px;">
+	<h1>Calculate</h1>
+	{% load staticfiles %}
+
+	<script type="text/javascript" src="{% static 'calculate/index.js' %}"></script>
+	<!-- <script type="text/javascript" src="../../static/calculate/index.js"></script> -->
+
+	<img src="{% static 'calculate/example.jpeg' %}" alt="My image">
+	<br>
+
+	<!-- <button onclick="say()" type="text/javascript">click</button> -->
+	<br>
+	<form>
+		<!-- <input type="text" name="text" id="input"> -->
+		<input type="text" name="number" id="input1" placeholder="first Number">
+		<br>
+		<input type="text" name="number" id="input2" placeholder="second Number">
+		<br><hr>
+		<!-- <input type="submit" name="calc"  onclick="calcul()"> -->
+		<input type="button" name="submit" onclick='add_()' value="add">
+		<input type="button" name="submit" onclick='sub_()' value="sub">
+		<input type="button" name="submit" onclick='mult_()' value="mult">
+		<input type="button" name="submit" onclick='div_()' value="div">
+		<br><hr>
+	</form>
+
+	<div id="result"></div>
+
+</body>
+</html>
