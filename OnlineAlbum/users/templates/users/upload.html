@@ -4,12 +4,23 @@
 	<title>Upload</title>
 </head>
 <body>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+	<a href="{% url 'display-gallary' %}" class="btn btn-primary ml-5">Gallary</a>
 	{% if form %}
-		<form method='POST' >
-			{% csrf_token %}
-			{{ form.as_p }}
-			<button type="submit">Save</button>
-		</form>
+		<div class="container">
+			<div class="form-group">
+				<form method='POST' enctype="multipart/form-data" action="{% url 'upload-user' %}">
+					{% csrf_token %}
+					{{ form.as_p }}
+					<button type="submit">Save</button>
+				</form>
+			</div>
+		</div>
 	{% endif %}
 </body>
 </html>
