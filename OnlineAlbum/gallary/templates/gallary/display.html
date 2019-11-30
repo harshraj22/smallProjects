@@ -22,7 +22,8 @@
 	<h3>To display all images.</h3>
 	<div class="container">
 		{% for asset in context %}
-			<a href="{{asset.img.url}}"> by {{asset}}</a>
+<!-- 			<a href="{{asset.img.url}}"> by {{asset}}</a> -->
+			<a href="{% url 'download' asset.id %}"> by {{asset}}</a>
 			<br>
 		{% endfor %}
 	</div>
