@@ -145,14 +145,14 @@
 							</div>
 						</div>
 						<div class="carousel-item">
-							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS5z-iaMTGVmNWGnnyaqOAuEl61eNq9od-vJes1SU1IxBE2Xcua" class="d-block w-100 h-auto img-fluid" alt="...">
+							<img src="images/img2-1.jpg" class="d-block w-100 h-auto img-fluid" alt="...">
 							<div class="carousel-caption d-none d-md-block">
 							  <h5>Second slide label</h5>
 							  <p>Second way.</p>
 							</div>
 						</div>
 						<div class="carousel-item">
-							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ1eTiMQEOkL-laS6H7b4e2U60IgA9ER9nKxq9FU6WbrgGPqXBL" class="d-block w-100 h-auto img-fluid" alt="...">
+							<img src="images/img3.jpg" class="d-block w-100 h-auto img-fluid" alt="...">
 							<div class="carousel-caption d-none d-md-block">
 							<h5>Third slide label</h5>
 							<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
