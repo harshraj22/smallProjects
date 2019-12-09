@@ -17,10 +17,12 @@
 
 	<style>
 		.footer {
-		  position: absolute;
+
 		  bottom: 0;
 		  width: 100%;
 		  height: 60px;
+		  padding-bottom: 0;
+		  margin-bottom: 0;
 		  /* Set the fixed height of the footer here */
 		  line-height: 60px;
 		  /* Vertically center the text there */
@@ -136,7 +138,7 @@
 					</ol>
 					<div class="carousel-inner">
 						<div class="carousel-item active">
-							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQEik9quQP0KIxj3dqPpPnehPcJHmfcok60Dly6oN9buAfQsba4" class="d-block w-100 h-auto img-fluid" alt="...">
+							<img src="images/img1.jpg" class="d-block w-100 h-auto img-fluid" alt="...">
 							<div class="carousel-caption d-none d-md-block">
 								<h5>First slide label</h5>
 								<p>This stores details about first slide.</p>
@@ -170,9 +172,15 @@
 		<!-- Corousel End -->
 		</div>
 	</div>
-	<footer class="footer">
-		<p class="text-center">Facebook</p>
-	</footer>
+	<div class="container-fluid">
+		<div class="row">
+			<footer id="sticky-footer" class="py-3 bg-dark text-white-50" style="bottom: 0; position: fixed; width: 100%; color: #e05ea0;">
+		    	<div class="container text-center">
+		    		<small>Copyright &copy; Your Website</small>
+		    	</div>
+			</footer>
+		</div>
+	</div>
 	
 <!--  -->
 <!-- 	<div class="container">

@@ -128,6 +128,15 @@
             }
         ?>
     </div>
+    <div class="container-fluid">
+        <div class="row">
+            <footer id="sticky-footer" class="py-3 bg-dark text-white-50" style="bottom: 0; position: fixed; width: 100%; color: #e05ea0;">
+                <div class="container text-center">
+                    <small>Copyright &copy; Your Website</small>
+                </div>
+            </footer>
+        </div>
+    </div>
 
 </body>
 </html>
