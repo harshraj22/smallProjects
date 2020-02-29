@@ -3,12 +3,24 @@ from getpass import getpass
 from teachers import Teacher
 from students import Student
 
-class User(Teacher, Student):
+class User():
     def __init__(self, name, password):
-        pass
+        try:
+            # if credentials are for student
+            user = Student(name, password)
+            user.interact()
+        # throw better exeptions and catch specific exeptions
+        except Exception as e:
+            user = Teacher(name, password)
+            user.interact()
+        except:
+            raise Exception('Designation unknown')
 
     @staticmethod
     def create_user(name, password, designation):
+        '''
+            creates user (student/teacher) with given credentials
+        '''
         if designation == 'student':
             Student.add_student(name=name, password=password)
         elif designation == 'teacher':
@@ -30,12 +42,11 @@ def main():
 
     args = parser.parse_args()
 
+    # if user chose to login
     if args.login:
-        pass
+        user = User(name=args.name, password=args.password)
     elif args.signUp:
         User.create_user(name=args.name, password=args.password, designation=args.type)
-
-    print(f'input data : name={args.name}, and password={args.password}')
 
 if __name__=='__main__':
     main()
