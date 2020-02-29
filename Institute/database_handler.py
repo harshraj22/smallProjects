@@ -48,6 +48,20 @@ class DatabaseHandler:
         self.institute_data['Institution']['Students'] = students_list
         with open('database.json', 'w') as f:
             json.dump(self.institute_data, f, indent=2)
+
+    def get_subjects_list(self):
+    	'''
+    		returns list of subjects available to give quiz
+    	'''
+    	Quizzes_dict =  self.institute_data['Institution']['Quizzes']
+    	subjects_lists = list(Quizzes_dict.keys())
+    	return subjects_lists
+    def get_subject_quiz(self,subject):
+    	'''
+    		returns a list of quizzes in respective subject
+    	'''
+    	return self.institute_data['Institution']['Quizzes'][subject]
+
     def get_tests_list(self):
     	''' returning a quizess dictionary  by that author who is logged in it returns
     	 name of subject name as key and in subject name key as quiz name'''
@@ -58,3 +72,4 @@ class DatabaseHandler:
         self.institute_data['Institution']['Quizzes'] = quizzes_list
         with open('database.json', 'w') as f:
             json.dump(self.institute_data, f, indent=2)
+
