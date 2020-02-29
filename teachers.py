@@ -1,10 +1,20 @@
 from database_handler import DatabaseHandler
 
 class Teacher:
-    def __init__(self, name):
+    def __init__(self, name, password):
         if not self.exists(name):
             raise Exception('No such teacher exists')
         self.is_teacher = True
+        
+        name = name.strip().lower()
+        password = password.strip().lower()
+        self.teachers_list = DatabaseHandler().get_teachers_list()
+
+        if self.teachers_list[name] != password:
+            raise Exception('Wrong Credentials')
+
+        self.name = name
+        self.password = password
     
     @staticmethod
     def exists(name):
@@ -24,4 +34,17 @@ class Teacher:
         teachers_list = DatabaseHandler().get_teachers_list()
         teachers_list[kwargs['name']] = kwargs['password']
         DatabaseHandler().update_teachers_list(teachers_list)
+
+    def update_details(self, **kwargs):
+        if 'name' not in kwargs.keys():
+            kwargs['name'] = self.name
+        if 'password' not in kwargs.keys():
+            kwargs['password'] = self.password
+        
+        del self.teachers_list[self.name]
+        self.teachers_list[kwargs['name']] = kwargs['password']
+        self.name = kwargs['name']
+        self.password = kwargs['password']
+        
+        DatabaseHandler().update_teachers_list(self.teachers_list)
         
