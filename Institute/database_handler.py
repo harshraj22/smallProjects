@@ -49,5 +49,6 @@ class DatabaseHandler:
         with open('database.json', 'w') as f:
             json.dump(self.institute_data, f, indent=2)
     def get_tests_list(self):
-    	# returning a quizess list by that author who is logged in
+    	''' returning a quizess dictionary  by that author who is logged in it returns
+    	 name of subject name as key and in subject name key as quiz name'''
     	return self.institute_data['Institution']['Quizzes']
