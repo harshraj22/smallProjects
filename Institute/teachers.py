@@ -15,6 +15,24 @@ class Teacher:
 
         self.name = name
         self.password = password
+
+    def interact(self):
+        options = {'A':'Add Problems', 'B':'Update Details', 'C':'List Problems by me'}
+        for key, value in options.items():
+            print('\t', key, value)
+        
+        choise = input()
+
+        if choise == 'A':
+            self.add_problems()
+        elif choise == 'B':
+            name = input('Enter user name')
+            password = input('Enter user password')
+            self.update_details(name=name, password=password)
+        elif choise == 'C':
+            print(self.tests_by_me())
+        else:
+            self.interact()
     
     @staticmethod
     def exists(name):
@@ -69,15 +87,21 @@ class Teacher:
         for i in range(4):
             temp = input(f"Enter option {i}: ").strip()
             options.append(temp)
+        answer = input('Enter answer for the question : ')
         
         if subject_name not in quizzes_list.keys():
-            raise Exception('No such subject found')
+            print('No Such Subject Exists')
+            # raise Exception('No such subject found')
 
         new_quiz_data = {
             "author": self.name,
             "Question": question,
-            "Options": options
+            "Options": options,
+            "Answer":answer
         }
+
+        if subject_name not in quizzes_list:
+            quizzes_list[subject_name] = dict()
         
         quizzes_list[subject_name][quiz_name] = new_quiz_data
         DatabaseHandler().add_new_quiz(quizzes_list)
