@@ -74,9 +74,10 @@ class Teacher:
             raise Exception('No such subject found')
 
         new_quiz_data = {
+            "author": self.name,
             "Question": question,
             "Options": options
         }
-        # quizzes_list[subject_name] = quiz_name
+        
         quizzes_list[subject_name][quiz_name] = new_quiz_data
         DatabaseHandler().add_new_quiz(quizzes_list)
