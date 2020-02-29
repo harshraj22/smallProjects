@@ -1,12 +1,45 @@
+import json
+
+INSTITUTION_TEMPLATE = '''
+	{
+		"Institution":{
+			"Students":{
+	
+			}, 	
+			"Teachers":{
+			
+			},
+			"Quizzes":{
+				"DataStructures":{
+
+				},
+				"Algorithms":{
+
+				},
+				"MachineLearning":{
+
+				}
+			}
+		}
+	}
+'''
+
+
 class DatabaseHandler:
     def __init__(self):
-        pass
+        # add a try catch block if the file does not exists
+        with open('database.json') as f:
+            self.institute_data = json.load(f)
 
     def get_students_list(self):
-        return None
+        return self.institute_data['Institution']['Students']
 
     def get_teachers_list(self):
-        return None
+        return self.institute_data['Institution']['Teachers']
 
     def update_teachers_list(self, teachers_list):
-        pass
+        # make some check to be sure teachers_list is in same format as required
+        self.institute_data['Institution']['Teachers'] = teachers_list
+        with open('database.json', 'w') as f:
+            json.dump(self.institute_data, f, indent=2)
+    
