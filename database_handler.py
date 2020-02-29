@@ -43,3 +43,9 @@ class DatabaseHandler:
         with open('database.json', 'w') as f:
             json.dump(self.institute_data, f, indent=2)
     
+    def update_students_list(self, students_list):
+        # make some check to be sure students_list is in same format as required
+        self.institute_data['Institution']['Students'] = students_list
+        with open('database.json', 'w') as f:
+            json.dump(self.institute_data, f, indent=2)
+    
