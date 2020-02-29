@@ -6,4 +6,7 @@ class Student:
 
     def exists(self, name):
         students_list = DatabaseHandler().get_students_list()
-        
+        name = name.strip().lower()
+        if name in students_list.keys():
+            return True
+        return False
