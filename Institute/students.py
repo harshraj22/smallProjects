@@ -16,6 +16,23 @@ class Student:
         self.name = name
         self.password = password
 
+    def interact(self):
+        options = {'A': 'Give Test', 'B':'Update Details', 'C':'Check Accuracy'}
+        print('Choose one of the following options :')
+        for key, value in options.items():
+            print('\t', key, value)
+        choise = input()
+        if choise == 'A':
+            pass
+        elif choise == 'B':
+            name = input('Enter name : ')
+            password = input('Enter password : ')
+            self.update_details(name=name, password=password)
+        elif choise == 'C':
+            pass
+        else:
+            self.interact()
+
     @staticmethod
     def exists(name):
         students_list = DatabaseHandler().get_students_list()
