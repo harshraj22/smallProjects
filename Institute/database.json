@@ -1,0 +1,11 @@
+{
+  "Institution": {
+    "Students": {},
+    "Teachers": {},
+    "Quizzes": {
+      "DataStructures": {},
+      "Algorithms": {},
+      "MachineLearning": {}
+    }
+  }
+}
