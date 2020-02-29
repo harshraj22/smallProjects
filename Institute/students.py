@@ -17,19 +17,19 @@ class Student:
         self.password = password
 
     def interact(self):
-        options = {'A': 'Give Test', 'B':'Update Details', 'C':'Check Accuracy'}
+        options = {'A': 'Give Test', 'B':'Update Details', 'C':'Check Details'}
         print('Choose one of the following options :')
         for key, value in options.items():
             print('\t', key, value)
         choise = input()
         if choise == 'A':
-            pass
+            self.give_test()
         elif choise == 'B':
             name = input('Enter name : ')
             password = input('Enter password : ')
             self.update_details(name=name, password=password)
         elif choise == 'C':
-            pass
+            self.show_details()
         else:
             self.interact()
 
@@ -49,6 +49,7 @@ class Student:
         elif Student.exists(kwargs['name']):
             raise Exception('Student already exists')
         students_list = DatabaseHandler().get_students_list()
+        students_list[kwargs['name']] = {'Correct':0,'Incorrect':0}
         students_list[kwargs['name']]['password'] = kwargs['password']
         DatabaseHandler().update_students_list(students_list)
         

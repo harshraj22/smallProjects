@@ -87,6 +87,7 @@ class Teacher:
         for i in range(4):
             temp = input(f"Enter option {i}: ").strip()
             options.append(temp)
+        answer = input('Enter answer for the question : ')
         
         if subject_name not in quizzes_list.keys():
             print('No Such Subject Exists')
@@ -95,7 +96,8 @@ class Teacher:
         new_quiz_data = {
             "author": self.name,
             "Question": question,
-            "Options": options
+            "Options": options,
+            "Answer":answer
         }
 
         if subject_name not in quizzes_list:
