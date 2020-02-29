@@ -48,3 +48,13 @@ class Teacher:
         
         DatabaseHandler().update_teachers_list(self.teachers_list)
         
+    def tests_by_me(self):
+        # add tests to check this method
+        all_tests = DatabaseHandler().get_tests_list()
+        my_tests = dict()
+
+        for subject in all_tests:
+            for name, test_data in subject.items():
+                if test_data['author'] == self.name:
+                    my_tests[name] = test_data
+        return my_tests
