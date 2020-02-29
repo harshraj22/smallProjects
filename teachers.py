@@ -53,8 +53,8 @@ class Teacher:
         all_tests = DatabaseHandler().get_tests_list()
         my_tests = dict()
 
-        for subject in all_tests:
-            for name, test_data in subject.items():
+        for subject_name, subject_data in all_tests.items():
+            for name, test_data in subject_data.items():
                 if test_data['author'] == self.name:
                     my_tests[name] = test_data
         return my_tests
