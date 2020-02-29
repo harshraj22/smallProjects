@@ -58,3 +58,26 @@ class Teacher:
                 if test_data['author'] == self.name:
                     my_tests[name] = test_data
         return my_tests
+
+    def add_problems(self):
+        quizzes_list = DatabaseHandler().get_tests_list()
+
+        subject_name = input("Enter Subject Name: ").strip()
+        quiz_name = input("Enter Quiz name: ").strip()
+        question = input("Enter question: ").strip()
+        options = []
+        for i in range(4):
+            temp = input(f"Enter option {i}: ").strip()
+            options.append(temp)
+        
+        if subject_name not in quizzes_list.keys():
+            raise Exception('No such subject found')
+
+        new_quiz_data = {
+            "author": self.name,
+            "Question": question,
+            "Options": options
+        }
+        
+        quizzes_list[subject_name][quiz_name] = new_quiz_data
+        DatabaseHandler().add_new_quiz(quizzes_list)
