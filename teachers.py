@@ -18,7 +18,6 @@ class Teacher:
     def add_teacher(**kwargs):
         # check for name and pass
         if not 'name' in kwargs.keys() or not 'password' in kwargs.keys():
-            print(kwargs)
             raise Exception('Not enough data to create such Teacher')
         elif Teacher.exists(kwargs['name']):
             raise Exception('Teacher already exists')
