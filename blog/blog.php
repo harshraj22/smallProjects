@@ -153,7 +153,7 @@
                                     </div>
                                     <div class="col-8 p-3">
                                         <div class="row p-3 text-center">
-                                            <h5> By : $author</h5>
+                                            <h5> By : <a href="filter.html"> $author</a></h5>
                                         </div>
                                         <p class="p-3 text-center"> $content </p>
                                         <div class="row p-3">
