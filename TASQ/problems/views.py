@@ -21,6 +21,7 @@ def display_problem(request, id):
 
 	if request.method == 'POST':
 		form = ProblemForm(request.POST)
+		print(request.POST.keys(), form.data.keys(), '\n\n\n\n')
 		print(f"post, {form.data['choice'], form.data['answer'], form.data['choice'] == form.data['answer']}")
 		
 		if form.data['choice'] == form.data['answer']:

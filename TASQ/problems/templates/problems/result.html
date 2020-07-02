@@ -1,10 +1,26 @@
-{{ AC|default_if_none:'' }} correct and {{ WA|default_if_none:'' }} Incorrect
-<br>
+{% extends 'problems/index.html' %}
 
-<script type="text/javascript">   
-    function Redirect() {  
-        window.location="http://127.0.0.1:8000/logout/"; 
-    } 
-    document.write("You will be redirected to a new page in 5 seconds"); 
-    setTimeout('Redirect()', 5000);   
-</script>
+{% block content %}
+	{% if messages %}
+		{% for message in messages %}
+			<div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				{{message}}
+			</div>
+		{% endfor %}
+	{% endif %}
+
+	<h3><i class="fa fa-check"  aria-hidden="true"></i> Correct: {{ AC|default_if_none:'' }} </h3>
+	
+	<h3><i class="fa fa-times" aria-hidden="true"></i> Incorrect: {{ WA|default_if_none:'' }}</h3>
+	<br><br>
+
+	<script type="text/javascript">   
+	    function Redirect() {  
+	        window.location.href="/logout/"; 
+	    } 
+	    document.write("You will be redirected to a new page in 5 seconds"); 
+	    setTimeout('Redirect()', 5000);   
+	</script>
+
+{% endblock content %}

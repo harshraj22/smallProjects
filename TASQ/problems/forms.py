@@ -15,7 +15,7 @@ class ProblemForm(forms.ModelForm):
 		# exclude = ['answer']
 		widgets = {
 			'answer': forms.HiddenInput(),
-			'description': forms.TextInput(attrs={'readonly':'readonly'}),
+			'description': forms.Textarea(attrs={'readonly':'readonly', 'style': 'border: None'}),
 			'opt1': forms.TextInput(attrs={'readonly':'readonly'}),
 			'opt2': forms.TextInput(attrs={'readonly':'readonly'}),
 			'opt3': forms.TextInput(attrs={'readonly':'readonly'}),

@@ -23,7 +23,7 @@ class Quiz(models.Model):
 		return f'{self.name} on {self.date}'
 	name = models.CharField(max_length=50)
 	date = models.DateField(default=date.today)
-	email = models.EmailField(max_length=70, null=True, blank=True, unique=True)
+	email = models.EmailField(max_length=70, null=True, blank=True, unique=False)
 	correct = models.IntegerField()
 	wrong = models.IntegerField()
 

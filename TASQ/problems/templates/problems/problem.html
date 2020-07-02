@@ -1,3 +1,8 @@
+{% extends 'problems/index.html' %}
+
+
+{% block content %}
+
 {% if messages %}
 	{% for message in messages %}
 		<div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
@@ -7,100 +12,113 @@
 	{% endfor %}
 {% endif %}
 
-  
-<body onload="countdown();"> 
-    <div> 
-        Time Left :: 
-        <input id="minutes" type="text" style="width: 10px; 
-             border: none; font-size: 16px;  
-            font-weight: bold; color: black;"><font size="5"> : 
-                        </font> 
-        <input id="seconds" type="text" style="width: 20px; 
-                        border: none; font-size: 16px; 
-                        font-weight: bold; color: black;"> 
-    </div> 
+    <body onload="countdown();"> 
+        <div> 
+            Time Left :: 
+            <input id="minutes" type="text" style="width: 10px; 
+                 border: none; font-size: 16px;  
+                font-weight: bold; color: black;"><font size="5"> : 
+                            </font> 
+            <input id="seconds" type="text" style="width: 20px; 
+                            border: none; font-size: 16px; 
+                            font-weight: bold; color: black;"> 
+        </div> 
 
-	<form method="POST" id="problem-form">
-		{% csrf_token %}
-		{{ form.as_p }}
-		<button type="submit">Submit</button>
-	</form>
-</body> 
+        <br><br>
+    	<form method="POST" id="problem-form">
+    		{% csrf_token %}
+            <p> <strong>Problem Statement: &nbsp; </strong> <br> {{ form.description.value }}</p> <br><br>
+            <div> A. {{ form.opt1 }}  &emsp; B. {{ form.opt2 }} </div> <br>
+            <div> C. {{ form.opt3 }}  &emsp; D. {{ form.opt4 }} </div> <br>
+            {{ form.answer }}
+
+            Difficulty: {{ form.difficulty }} <br><br>
+            Your Choice: {{ form.choice }} <br><br>
+    		<button type="submit">Submit</button>
+
+    	</form>
+    </body> 
 
 
-<script type="text/javascript">
-    window.onload=function(){ 
-    	 Decrement();
-    	// auto submit form in 3 seconds
-        window.setTimeout(function() { document.getElementById('problem-form').submit(); }, 7000);
-    };
+    <script type="text/javascript">
+        var refresh_sec = 5;
+        window.onload=function(){ 
+        	 Decrement();
+        	// auto submit form in 3 seconds
+            window.setTimeout(function() { document.getElementById('problem-form').submit(); }, refresh_sec  * 1000);
+        };
 
-    //set minutes 
-    var mins = 0; 
+        //set minutes 
+        var mins = 0; 
 
-    //calculate the seconds 
-    var secs = 7; 
+        //calculate the seconds 
+        var secs = refresh_sec; 
 
-    //countdown function is evoked when page is loaded 
-	// function countdown() { 
- //        setTimeout('Decrement()', 60); 
- //    } 
-    // window.onload=Decrement();
+        //countdown function is evoked when page is loaded 
+    	// function countdown() { 
+     //        setTimeout('Decrement()', 60); 
+     //    } 
+        // window.onload=Decrement();
 
-    //Decrement function decrement the value. 
-    function Decrement() { 
-        if (document.getElementById) { 
-            minutes = document.getElementById("minutes"); 
-            seconds = document.getElementById("seconds"); 
-            // minutes = mins;
-            // seconds = secs;
+        //Decrement function decrement the value. 
+        function Decrement() { 
+            if (document.getElementById) { 
+                minutes = document.getElementById("minutes"); 
+                seconds = document.getElementById("seconds"); 
+                // minutes = mins;
+                // seconds = secs;
 
-            //if less than a minute remaining 
-            //Display only seconds value. 
-            if (seconds < 59) { 
-                seconds.value = secs; 
-            } 
+                //if less than a minute remaining 
+                //Display only seconds value. 
+                if (seconds < 59) { 
+                    seconds.value = secs; 
+                } 
 
-            //Display both minutes and seconds 
-            //getminutes and getseconds is used to 
-            //get minutes and seconds 
-            else { 
-                minutes.value = getminutes(); 
-                seconds.value = getseconds(); 
-            } 
-            //when less than a minute remaining 
-            //colour of the minutes and seconds 
-            //changes to red 
-            if (mins < 1) { 
-                minutes.style.color = "red"; 
-                seconds.style.color = "red"; 
-            } 
-            //if seconds becomes zero, 
-            //then page alert time up 
-            if (mins < 0) { 
-                // alert('time up'); 
-                minutes.value = 0; 
-                seconds.value = 0; 
-            } 
-            //if seconds > 0 then seconds is decremented 
-            else { 
-                secs--; 
-                setTimeout('Decrement()', 1000); 
+                //Display both minutes and seconds 
+                //getminutes and getseconds is used to 
+                //get minutes and seconds 
+                else { 
+                    minutes.value = getminutes(); 
+                    seconds.value = getseconds(); 
+                } 
+                //when less than a minute remaining 
+                //colour of the minutes and seconds 
+                //changes to red 
+                if (mins < 1) { 
+                    minutes.style.color = "red"; 
+                    seconds.style.color = "red"; 
+                } 
+                //if seconds becomes zero, 
+                //then page alert time up 
+                if (mins < 0) { 
+                    // alert('time up'); 
+                    minutes.value = 0; 
+                    seconds.value = 0; 
+                } 
+                //if seconds > 0 then seconds is decremented 
+                else { 
+                    secs--; 
+                    setTimeout('Decrement()', 1000); 
+                } 
             } 
         } 
-    } 
 
-    function getminutes() { 
-        //minutes is seconds divided by 60, rounded down 
-        mins = Math.floor(secs / 60); 
-        return mins; 
-    } 
+        function getminutes() { 
+            //minutes is seconds divided by 60, rounded down 
+            mins = Math.floor(secs / 60); 
+            return mins; 
+        } 
 
-    function getseconds() { 
-        //take minutes remaining (as seconds) away  
-        //from total seconds remaining 
-        return secs - Math.round(mins * 60); 
-    } 
-</script> 
-<!-- onload function is evoke when page is load --> 
-<!--countdown function is called when page is loaded --> 
+        function getseconds() { 
+            //take minutes remaining (as seconds) away  
+            //from total seconds remaining 
+            return secs - Math.round(mins * 60); 
+        } 
+
+    $("textarea").each(function(textarea) {
+        $(this).height( $(this)[0].scrollHeight );
+    });
+    </script> 
+    <!-- onload function is evoke when page is load --> 
+    <!--countdown function is called when page is loaded --> 
+{% endblock content %}
