@@ -1,0 +1,2 @@
+store admin password in sql database
+/home/harsh/Desktop/Lamp/apache2/htdocs/Blog
