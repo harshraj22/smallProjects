@@ -1,4 +1,3 @@
-
 # Created by https://www.gitignore.io/api/django
 # Edit at https://www.gitignore.io/?templates=django
 
@@ -18,6 +17,10 @@ media
 
 ### Django.Python Stack ###
 # Byte-compiled / optimized / DLL files
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
 *.py[cod]
 *$py.class
 
@@ -65,11 +68,32 @@ htmlcov/
 nosetests.xml
 coverage.xml
 *.cover
+
 .hypothesis/
 .pytest_cache/
 
 # Translations
 *.mo
+
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
 
 # Scrapy stuff:
 .scrapy
@@ -80,8 +104,22 @@ docs/_build/
 # PyBuilder
 target/
 
+
 # pyenv
 .python-version
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+#   For a library or package, you might want to ignore these files since the code is
+#   intended to run in multiple environments; otherwise, check them in:
+# .python-version
+
 
 # pipenv
 #   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
@@ -90,11 +128,30 @@ target/
 #   install all needed dependencies.
 #Pipfile.lock
 
+
 # celery beat schedule file
 celerybeat-schedule
 
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+__pypackages__/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+
 # SageMath parsed files
 *.sage.py
+
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
 # Spyder project settings
 .spyderproject
@@ -103,10 +160,12 @@ celerybeat-schedule
 # Rope project settings
 .ropeproject
 
+
 # Mr Developer
 .mr.developer.cfg
 .project
 .pydevproject
+
 
 # mkdocs documentation
 /site
@@ -119,4 +178,9 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+
 # End of https://www.gitignore.io/api/django
+
+# pytype static type analyzer
+.pytype/
+
