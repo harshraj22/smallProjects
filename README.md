@@ -84,3 +84,14 @@ Insertion of new data is handled by creating new structures inplace. This is don
 The database is prone to threat if the programme exits unexpectedly (e.g. forced inturption using ctrl+c) as the data is saved only when the programme exits. [Signal handling](https://www.geeksforgeeks.org/write-a-c-program-that-doesnt-terminate-when-ctrlc-is-pressed/) concepts are used to make sure that the programme exits in the way it is expected to be and data is saved before exiting.
 
 That's all in a nutshell. Please go through code as I've added lots of comments. Feel free to contribute and use. For further interactions one may contact via [e mail](harshraj22aug@gmail.com)
+
+
+
+# CP_command_Ubuntu
+> A mimic of CP command of Ubuntu using C.
+
+### Concepts learned :
+   Command line argument, file handling, pointers and other common concepts like use of ',' as separator and operator.
+
+### Overview : 
+   The programme takes the file name and the address to be copied as Command Line Argument and copies the file content to the desired location with same name . 
