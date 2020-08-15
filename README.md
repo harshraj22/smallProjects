@@ -135,3 +135,6 @@ A C program to play Four In A Row game. [![MIT license](https://img.shields.io/b
         * In case of tie, no player is declared winner.
         * Compete among yourselves and have fun . ✌️😊
 ![Game_final](https://user-images.githubusercontent.com/46635452/58410556-08a22200-8090-11e9-98c7-421f6571e0c3.png)
+
+# gaussian_elimination
+This repo contains implementation of Gaussian Elimination to solve set of Linear Equations.
