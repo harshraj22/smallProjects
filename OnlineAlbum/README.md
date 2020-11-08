@@ -9,7 +9,7 @@ An album that provides users space to store thier images.
 * Learnt downloading files from website.
 
 ### For using postgresql, make the following changes
-* apart from given dependencies, install `pip3 install psycopg2-binary`
+* apart from given dependencies (Django, Pillow), install `pip3 install psycopg2-binary`
 * create new posqgresql user and database, giving all access of the database to the newly created user (follow [this](https://medium.com/agatha-codes/painless-postgresql-django-d4f03364989) tutorial for first part)
 * edit settings.py as per following
 ```
