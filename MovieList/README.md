@@ -8,6 +8,6 @@ A very basic React Native based app (unpublished)
 
 Learnings:
 
-- Basics of React and react native (<Image />, <Text />, <View /> etc)
+- Basics of React and react native (`<Image />, <Text />, <View />` etc)
 - Adding activity (window for different pages/ screens) and passing data across them
 - Lots of debugging :)
