@@ -4,17 +4,42 @@ import {
 	StyleSheet,
 	Text,
 	View,
-	Button,
 	FlatList,
 	Image,
 	TouchableHighlight,
+	ScrollView,
 } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
+import { Button } from "react-native-paper";
 
 const Stack = createStackNavigator();
 
 const data = [
+	{
+		title: "The Halloween",
+		description:
+			"  This is the first movie describing the Halloween festival. This is the first movie describing the Halloween festival. This is the first movie describing the Halloween festival. This is the first movie describing the Halloween festival.This is the first movie describing the Halloween festival. It talks about two ghosts meeting people on halloween night.This is the first movie describing the Halloween festival. It talks about two ghosts meeting people on halloween night.This is the first movie describing the Halloween festival. It talks about two ghosts meeting people on halloween night.This is the first movie describing the Halloween festival. It talks about two ghosts meeting people on halloween night.This is the first movie describing the Halloween festival. It talks about two ghosts meeting people on halloween night.This is the first movie describing the Halloween festival. It talks about two ghosts meeting people on halloween night. This is the next level work being done.  ",
+		img: require("./data/images/loss.png"),
+	},
+	{
+		title: "The Neighbours",
+		description:
+			"This movie is all about strange neighbours that shift to the city, and the mess they create, not knowing its consequences.",
+		img: require("./assets/favicon.png"),
+	},
+	{
+		title: "Venom",
+		description:
+			"This movie is about a scientific experiment, that accidently turns a human into venom. ",
+		img: require("./assets/favicon.png"),
+	},
+	{
+		title: "Other",
+		description:
+			"This movie is about a scientific experiment, that accidently turns a human into venom. ",
+		img: require("./assets/favicon.png"),
+	},
 	{
 		title: "The Halloween",
 		description:
@@ -33,44 +58,152 @@ const data = [
 			"This movie is about a scientific experiment, that accidently turns a human into venom. ",
 		img: require("./assets/favicon.png"),
 	},
+	{
+		title: "Other",
+		description:
+			"This movie is about a scientific experiment, that accidently turns a human into venom. ",
+		img: require("./assets/favicon.png"),
+	},
+	{
+		title: "The Halloween",
+		description:
+			"This is the first movie describing the Halloween festival. It talks about two ghosts meeting people on halloween night.",
+		img: require("./data/images/loss.png"),
+	},
+	{
+		title: "The Neighbours",
+		description:
+			"This movie is all about strange neighbours that shift to the city, and the mess they create, not knowing its consequences.",
+		img: require("./assets/favicon.png"),
+	},
+	{
+		title: "Venom",
+		description:
+			"This movie is about a scientific experiment, that accidently turns a human into venom. ",
+		img: require("./assets/favicon.png"),
+	},
+	{
+		title: "Other",
+		description:
+			"This movie is about a scientific experiment, that accidently turns a human into venom. ",
+		img: require("./assets/favicon.png"),
+	},
+	{
+		title: "The Halloween",
+		description:
+			"This is the first movie describing the Halloween festival. It talks about two ghosts meeting people on halloween night.",
+		img: require("./data/images/loss.png"),
+	},
+	{
+		title: "The Neighbours",
+		description:
+			"This movie is all about strange neighbours that shift to the city, and the mess they create, not knowing its consequences.",
+		img: require("./assets/favicon.png"),
+	},
+	{
+		title: "Venom",
+		description:
+			"This movie is about a scientific experiment, that accidently turns a human into venom. ",
+		img: require("./assets/favicon.png"),
+	},
+	{
+		title: "Other",
+		description:
+			"This movie is about a scientific experiment, that accidently turns a human into venom. ",
+		img: require("./assets/favicon.png"),
+	},
+	{
+		title: "Other",
+		description:
+			"This movie is about a scientific experiment, that accidently turns a human into venom. ",
+		img: require("./assets/favicon.png"),
+	},
+	{
+		title: "Other",
+		description:
+			"This movie is about a scientific experiment, that accidently turns a human into venom. ",
+		img: require("./assets/favicon.png"),
+	},
 ];
 
 const DetailScreen = (props) => {
 	return (
-		<View style={styles.container}>
-			{
-				<FlatList
-					data={data}
-					renderItem={(val) => {
-						// console.log(val);
-						let index = val.index;
-						val = val.item;
-						let title = val.title;
-						let description = val.description;
-						let img = val.img; // require(val.img);
+		<View style={[styles.container, styles.show]}>
+			<FlatList
+				style={[
+					{
+						flexDirection: "column",
+						flex: 1,
+						width: "100%",
+					},
+					styles.show,
+				]}
+				data={data}
+				keyExtractor={(item, index) => index.toString()}
+				renderItem={({ index, item }) => {
+					let title = item.title;
+					let description = item.description;
+					let img = item.img; // require(val.img);
+					// console.log(item, typeof item);
 
-						return (
-							<>
-								{/* <Image source={val.img} style={{ width: 10, height: 10 }} /> */}
-								<TouchableHighlight style={styles.button} key={index}>
+					return (
+						<TouchableHighlight
+							style={[styles.button, { flexDirection: "row", padding: 7 }]}
+							key={index}
+						>
+							<View
+								style={[
+									{
+										flex: 1,
+										flexDirection: "row",
+										height: 50,
+										justifyContent: "flex-start",
+									},
+									styles.show,
+								]}
+							>
+								<Image
+									source={img}
+									style={[
+										{
+											borderRadius: 95,
+											width: "20%",
+											height: "100%",
+											resizeMode: "cover",
+											marginHorizontal: 10,
+										},
+										styles.show,
+									]}
+								/>
+								<View style={[{ width: "70%", height: "100%" }, styles.show]}>
 									<Button
 										key={index}
+										icon="book"
 										color="#d2691e"
-										title={val.title}
+										mode="contained"
+										style={{
+											height: "100%",
+											alignContent: "flex-start",
+											justifyContent: "center",
+											borderRadius: 30,
+											padding: 10,
+										}}
 										onPress={() =>
 											props.navigation.navigate("other", {
-												title: val.title,
-												description: val.description,
-												img: val.img,
+												title: title,
+												description: description,
+												img: img,
 											})
 										}
-									/>
-								</TouchableHighlight>
-							</>
-						);
-					}}
-				/>
-			}
+									>
+										{title}
+									</Button>
+								</View>
+							</View>
+						</TouchableHighlight>
+					);
+				}}
+			/>
 		</View>
 	);
 };
@@ -92,10 +225,12 @@ const OtherScreen = (props) => {
 			>
 				{title}
 			</Text>
-			<TouchableHighlight style={[styles.items, { alignItems: "center" }]}>
-				<Image source={img} style={{ width: 300, height: 300 }}></Image>
-			</TouchableHighlight>
-			<Text style={styles.items}> {description}</Text>
+			<ScrollView>
+				<TouchableHighlight style={[styles.items, { alignItems: "center" }]}>
+					<Image source={img} style={{ width: 300, height: 300 }}></Image>
+				</TouchableHighlight>
+				<Text style={styles.items}> {description}</Text>
+			</ScrollView>
 		</View>
 	);
 };
@@ -104,8 +239,22 @@ export default function App() {
 	return (
 		<NavigationContainer>
 			<Stack.Navigator>
-				<Stack.Screen name="details" component={DetailScreen} />
-				<Stack.Screen name="other" component={OtherScreen} />
+				<Stack.Screen
+					name="details"
+					component={DetailScreen}
+					options={{
+						title: "Movie List",
+						headerStyle: { backgroundColor: "lemonchiffon" },
+					}}
+				/>
+				<Stack.Screen
+					name="other"
+					component={OtherScreen}
+					options={{
+						title: "Movie Description",
+						headerStyle: { backgroundColor: "linen" },
+					}}
+				/>
 			</Stack.Navigator>
 		</NavigationContainer>
 	);
@@ -117,7 +266,7 @@ const styles = StyleSheet.create({
 	},
 	container: {
 		flex: 1,
-		flexDirection: "row",
+		flexDirection: "column",
 		flexWrap: "wrap",
 		backgroundColor: "dodgerblue",
 		justifyContent: "space-around",
@@ -134,5 +283,9 @@ const styles = StyleSheet.create({
 		alignContent: "center",
 		fontWeight: "200",
 		padding: 20,
+	},
+	show: {
+		borderColor: "black",
+		// borderWidth: 1,
 	},
 });
