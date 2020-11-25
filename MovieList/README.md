@@ -1,6 +1,6 @@
 ## Movie List
 
-A very basic React Native based app (unpublished)
+A **very basic** React Native based app (access [here](https://expo.io/@harshraj22/projects/movie-details) using expo)
 
 - use exp cli
 - Insert images at correct positions, copy contents of App.js
