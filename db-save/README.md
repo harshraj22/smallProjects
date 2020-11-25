@@ -12,3 +12,6 @@ Learnings:
 - Basic array methods of JavaScript (eg. forEach, map, filter)
 - Hooks for functional components
 - Yes ! undoubtedly Lots of debugging (@\_@)
+
+Screenshot:
+![img](https://user-images.githubusercontent.com/46635452/100215489-1495cb00-2f37-11eb-979d-04ddba53fb88.png)

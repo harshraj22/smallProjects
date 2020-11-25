@@ -6,9 +6,10 @@ import {
 	View,
 	TouchableOpacity,
 	ScrollView,
+	FlatList,
 } from "react-native";
 
-import { Button } from "react-native-paper";
+import { Button, Appbar } from "react-native-paper";
 
 import * as SQLite from "expo-sqlite";
 const db = SQLite.openDatabase("db.testDb"); // returns Database object
@@ -99,68 +100,112 @@ const TableComp = () => {
 			ids.push(value.id);
 		});
 
-		for (let i = 0; i < size; i += 1) await deleteItem(ids[i]);
+		for (let i = 0; i < 1; i += 1) await deleteItem(ids[i]);
 
 		console.log("cleaned item count: ", size, "\n");
 	}
 
 	return (
-		<View>
-			<Button
-				icon="camera"
-				mode="contained"
-				onPress={() => {
-					console.log("Inserting data...");
-					newItem();
-					console.log("Length of data: ", data.length, "\n");
-				}}
-				style={{ margin: 10 }}
-			>
-				Insert
-			</Button>
+		<View style={[{ flex: 1, width: "100%" }, styles.show]}>
+			<View>
+				<Button
+					icon="pencil"
+					mode="contained"
+					onPress={() => {
+						console.log("Inserting data...");
+						newItem();
+						console.log("Length of data: ", data.length, "\n");
+					}}
+					style={{ margin: 10 }}
+				>
+					Insert
+				</Button>
 
-			<Button
-				icon="camera"
-				mode="contained"
-				onPress={() => {
-					console.log("fetching data.....");
-					fetchData();
-					console.log("Length of data: ", data.length, "\n");
-				}}
-				style={{ margin: 10 }}
-			>
-				Fetch
-			</Button>
+				<Button
+					icon="phone"
+					mode="contained"
+					onPress={() => {
+						console.log("fetching data.....");
+						fetchData();
+						console.log("Length of data: ", data.length, "\n");
+					}}
+					style={{ margin: 10 }}
+				>
+					Fetch
+				</Button>
 
-			<Button
-				icon="camera"
-				mode="contained"
-				onPress={() => {
-					console.log("Displaying", data.length, " data.....");
-					data.forEach(({ count, id, text }, index, array) => {
-						console.log(
-							"at index ",
-							index,
-							" => ",
-							` count: ${count}  id: ${id}  text: ${text}`
+				<Button
+					icon="camera"
+					mode="contained"
+					onPress={() => {
+						console.log("Displaying", data.length, " data.....");
+						data.forEach(({ count, id, text }, index, array) => {
+							console.log(
+								"at index ",
+								index,
+								" => ",
+								` count: ${count}  id: ${id}  text: ${text}`
+							);
+						});
+
+						console.log("\n");
+					}}
+					style={{ margin: 10 }}
+				>
+					Show
+				</Button>
+
+				<Button
+					icon="eraser"
+					mode="contained"
+					onPress={handleDelete}
+					style={{ margin: 10 }}
+				>
+					Clean
+				</Button>
+			</View>
+			<View style={{ flex: 1, flexDirection: "column" }}>
+				<FlatList
+					data={data}
+					renderItem={({ index, item }) => {
+						return (
+							<View
+								style={{
+									flexDirection: "row",
+									justifyContent: "space-between",
+									borderColor: "red",
+									borderWidth: 1,
+									borderRadius: 50,
+									margin: 10,
+									padding: 10,
+								}}
+							>
+								<View style={styles.element}>
+									<Text>{item.id}</Text>
+								</View>
+								<View style={styles.element}>
+									<Text>{item.text}</Text>
+								</View>
+								<View style={[styles.element]}>
+									<Text>{item.count}</Text>
+								</View>
+								<View style={[styles.element]}>
+									<Button
+										icon="delete"
+										onPress={() => {
+											deleteItem(item.id);
+										}}
+									>
+										Delete
+									</Button>
+								</View>
+							</View>
 						);
-					});
-
-					console.log("\n");
-				}}
-				style={{ margin: 10 }}
-			>
-				Show
-			</Button>
-
-			<Button
-				icon="camera"
-				mode="contained"
-				onPress={handleDelete}
-				style={{ margin: 10 }}
-			>
-				Clean
-			</Button>
+						console.log(item);
+					}}
+					keyExtractor={(item, index) => index.toString()}
+				/>
+			</View>
 		</View>
 	);
 };
@@ -168,7 +213,13 @@ const TableComp = () => {
 export default function App() {
 	return (
 		<View style={styles.container}>
-			<Text>Testing sqlite db ! Look console (^_^)</Text>
+			<Appbar.Header style={{ width: "100%" }}>
+				<Appbar.BackAction />
+				<Appbar.Content title="SQL: To Do List" subtitle="Data Persists" />
+				<Appbar.Action icon="magnify" />
+				<Appbar.Action icon="dots-vertical" />
+			</Appbar.Header>
+			{/* <Text>Testing sqlite db ! Look console (^_^)</Text> */}
 			<TableComp />
 			<StatusBar style="auto" />
 		</View>
@@ -181,5 +232,13 @@ const styles = StyleSheet.create({
 		backgroundColor: "#fff",
 		alignItems: "center",
 		justifyContent: "center",
+	},
+	element: {
+		marginHorizontal: 3,
+		justifyContent: "center",
+	},
+	show: {
+		borderColor: "black",
+		borderWidth: 1,
 	},
 });
