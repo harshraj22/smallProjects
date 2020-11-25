@@ -8,8 +8,9 @@ import {
 	ScrollView,
 	FlatList,
 } from "react-native";
+import { Formik } from "formik";
 
-import { Button, Appbar } from "react-native-paper";
+import { Button, Appbar, TextInput } from "react-native-paper";
 
 import * as SQLite from "expo-sqlite";
 const db = SQLite.openDatabase("db.testDb"); // returns Database object
@@ -39,15 +40,15 @@ const TableComp = () => {
 		}); // end transaction
 	};
 
-	const newItem = () => {
+	const newItem = ({ text, count }) => {
 		db.transaction((tx) => {
 			tx.executeSql(
 				"INSERT INTO items (text, count) values (?, ?)",
-				["gibberish", 0],
+				[text, count],
 				(txObj, resultSet) =>
 					setData([
 						...data,
-						{ id: resultSet.insertId, text: "gibberish", count: 0 },
+						{ id: resultSet.insertId, text: text, count: count },
 					]),
 				(txObj, error) => console.log("Error", error)
 			);
@@ -108,61 +109,95 @@ const TableComp = () => {
 	return (
 		<View style={[{ flex: 1, width: "100%" }, styles.show]}>
 			<View>
-				<Button
-					icon="pencil"
-					mode="contained"
-					onPress={() => {
-						console.log("Inserting data...");
-						newItem();
-						console.log("Length of data: ", data.length, "\n");
-					}}
-					style={{ margin: 10 }}
-				>
-					Insert
-				</Button>
+				<View style={{ flexDirection: "row" }}>
+					<Button
+						icon="phone"
+						mode="contained"
+						onPress={() => {
+							console.log("fetching data.....");
+							fetchData();
+							console.log("Length of data: ", data.length, "\n");
+						}}
+						style={{ margin: 10 }}
+					>
+						Fetch
+					</Button>
 
-				<Button
-					icon="phone"
-					mode="contained"
-					onPress={() => {
-						console.log("fetching data.....");
-						fetchData();
-						console.log("Length of data: ", data.length, "\n");
-					}}
-					style={{ margin: 10 }}
-				>
-					Fetch
-				</Button>
+					<Button
+						icon="camera"
+						mode="contained"
+						onPress={() => {
+							console.log("Displaying", data.length, " data.....");
+							data.forEach(({ count, id, text }, index, array) => {
+								console.log(
+									"at index ",
+									index,
+									" => ",
+									` count: ${count}  id: ${id}  text: ${text}`
+								);
+							});
 
-				<Button
-					icon="camera"
-					mode="contained"
-					onPress={() => {
-						console.log("Displaying", data.length, " data.....");
-						data.forEach(({ count, id, text }, index, array) => {
-							console.log(
-								"at index ",
-								index,
-								" => ",
-								` count: ${count}  id: ${id}  text: ${text}`
-							);
-						});
+							console.log("\n");
+						}}
+						style={{ margin: 10 }}
+					>
+						Show
+					</Button>
 
-						console.log("\n");
-					}}
-					style={{ margin: 10 }}
-				>
-					Show
-				</Button>
+					<Button
+						icon="eraser"
+						mode="contained"
+						onPress={handleDelete}
+						style={{ margin: 10 }}
+					>
+						Clean
+					</Button>
+				</View>
 
-				<Button
-					icon="eraser"
-					mode="contained"
-					onPress={handleDelete}
-					style={{ margin: 10 }}
-				>
-					Clean
-				</Button>
+				<ScrollView style={{ padding: 10 }} keyboardShouldPersistTaps="handled">
+					<Formik
+						initialValues={{ text: "", count: 0 }}
+						onSubmit={(values) => newItem(values)}
+					>
+						{({ handleChange, handleSubmit, values }) => (
+							<View style={[]}>
+								<View
+									style={{
+										flexDirection: "row",
+										justifyContent: "space-around",
+									}}
+								>
+									<TextInput
+										onChangeText={handleChange("text")}
+										label="text"
+										value={values.text}
+										type="outlined"
+										style={{ marginVertical: 5, flex: 1, marginHorizontal: 2 }}
+									/>
+									<TextInput
+										onChangeText={handleChange("count")}
+										label="count"
+										type="outlined"
+										value={values.count}
+										style={{
+											marginVertical: 5,
+											flex: 0.3,
+											marginHorizontal: 2,
+										}}
+									/>
+								</View>
+								<Button
+									onPress={handleSubmit}
+									mode="contained"
+									style={{ marginVertical: 5 }}
+									icon="pencil"
+								>
+									Insert
+								</Button>
+							</View>
+						)}
+					</Formik>
+				</ScrollView>
 			</View>
 			<View style={{ flex: 1, flexDirection: "column" }}>
 				<FlatList
