@@ -12,7 +12,7 @@
   Like normal text based adventure games, this game is divided into various breakpoints. Each breakpoint is assigned with unique id . All the informations like allowed path to proceed, view of surrounding etc are then tagged to the corresponding id.  
   
 ### Requirements:
-   Python3.8 or above (to be added in `requirements.txt`
+   Python3.8 or above (to be added in `requirements.txt`)
 
 ### How to contribute:
   1. Get familiar with the code (I'd clean up the code soon xD).
