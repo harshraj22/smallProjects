@@ -6,7 +6,7 @@ from kafka import KafkaProducer
 ORDER_KAFKA_TOPIC = "order_detail"
 ORDER_LIMIT = 150
 
-producer = KafkaProducer(bootstrap_servers="localhost:29092")
+producer = KafkaProducer(bootstrap_servers="localhost:9092")
 
 print("Going to be generating order after 10 seconds")
 print("Will generate one unique order every 5 seconds")

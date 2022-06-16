@@ -1,6 +1,6 @@
 from kafka import KafkaConsumer
 
-consumer = KafkaConsumer('order_details', bootstrap_servers='localhost:29092', group_id='replica')
+consumer = KafkaConsumer('order_details', bootstrap_servers='localhost:9092', group_id='replica')
 
 print("Gonna start listening")
 while True:
