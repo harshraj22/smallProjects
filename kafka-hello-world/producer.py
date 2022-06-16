@@ -1,25 +1,22 @@
-import json
-import time
-
 from kafka import KafkaProducer
+import json
+from time import sleep
+import uuid
+    
 
-ORDER_KAFKA_TOPIC = "order_detail"
-ORDER_LIMIT = 150
+producer = KafkaProducer(bootstrap_servers='localhost:9092')
+# _instance = Faker()
 
-producer = KafkaProducer(bootstrap_servers="localhost:9092")
 
-print("Going to be generating order after 10 seconds")
-print("Will generate one unique order every 5 seconds")
-# time.sleep(10)
-
-for i in range(ORDER_LIMIT):
-    data = {
-        "order_id": i,
-        "user_id": f"tom_{i}",
-        "total_cost": i,
-        "items": "burger,sandwich",
+for _ in range(20):
+    _data = {
+        "first_name": '_instance.first_name()',
+        "id":str(_),
+        "uuid":uuid.uuid4().__str__()
     }
+    _payload = json.dumps(_data).encode("utf-8")
+    response = producer.send('FirstTopic', _payload)
+    print(_data)
 
-    producer.send("order_details", json.dumps(data).encode("utf-8"))
-    print(f"Done Sending..{i}")
-    # time.sleep(5)
+
+    sleep(0.2)
