@@ -1,5 +1,5 @@
 # https://github.com/soumilshah1995/getting-started-with-kafka-and-elasticsearch/tree/main/Lab2
-version: '3'
+version: '3.7'
 services:
   zookeeper:
     image: confluentinc/cp-zookeeper:7.0.1
