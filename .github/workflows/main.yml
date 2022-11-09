@@ -1,0 +1,13 @@
+on:
+  release:
+    types: [published]
+    
+jobs:
+  login:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+        run: echo ${{ github.event.release.tag_name }}
