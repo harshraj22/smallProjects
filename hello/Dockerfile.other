@@ -1,0 +1,14 @@
+FROM python:3.8-slim
+
+# layer caching for faster builds
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+#COPY app.py /app.py
+# ADD . /app
+WORKDIR /app
+COPY other.py other.py
+
+EXPOSE 8002
+
+CMD ["uvicorn", "other:app", "--reload", "--host", "0.0.0.0", "--port", "8002"]
