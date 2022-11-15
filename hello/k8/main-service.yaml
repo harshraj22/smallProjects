@@ -6,7 +6,8 @@ metadata:
     name: main-service-label
 spec:
   selector:
-    name: main-deployment-label
+    app: main # label selector of pod, not the deployment
+    # name: main-deployment-label
   type: ClusterIP
   ports:
   - port: 8001
