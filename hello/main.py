@@ -10,4 +10,4 @@ async def root():
 
 @app.get("/other")
 async def other():
-    return requests.get('http://localhost:8002/').json()
+    return requests.get('http://other-service:8002/').json()

@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: other-service
+  labels:
+    name: other-service-label
+spec:
+  selector:
+    app: other # label selector of pod, not the deployment
+    # name: other-deployment-label
+  type: ClusterIP
+  ports:
+  - port: 8002
+    targetPort: 8002
+
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: other-service
+# spec:
+#   selector:
+#     name: other-deployment
+#   type: NodePort
+#   ports:
+#   - port: 8001
+#     protocol: TCP
+#     targetPort: 8001
