@@ -6,8 +6,21 @@ metadata:
     name: main-service-label
 spec:
   selector:
-    name: main-deployment
+    name: main-deployment-label
   type: ClusterIP
   ports:
   - port: 8001
     targetPort: 8001
+
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: main-service
+# spec:
+#   selector:
+#     name: main-deployment
+#   type: NodePort
+#   ports:
+#   - port: 8001
+#     protocol: TCP
+#     targetPort: 8001
