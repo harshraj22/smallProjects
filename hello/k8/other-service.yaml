@@ -11,6 +11,7 @@ spec:
   type: ClusterIP
   ports:
   - port: 8002
+    protocol: TCP
     targetPort: 8002
 
 # apiVersion: v1

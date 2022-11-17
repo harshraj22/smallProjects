@@ -11,4 +11,4 @@ COPY other.py other.py
 
 EXPOSE 8002
 
-CMD ["uvicorn", "other:app", "--reload", "--host", "0.0.0.0", "--port", "8002"]
+CMD ["uvicorn", "other:app", "--reload", "--port", "8002"]
