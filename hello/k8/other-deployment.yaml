@@ -16,6 +16,7 @@ spec:
       containers:
       - name: other
         image: harshraj22/other
+        imagePullPolicy: IfNotPresent
         resources:
           limits:
             memory: "128Mi"
