@@ -32,3 +32,4 @@ jobs:
           file: ./hello/Dockerfile.other
           push: true
           tags: harshraj22/other:latest
+          platforms: linux/amd64,linux/arm64
