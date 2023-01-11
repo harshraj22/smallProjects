@@ -2,11 +2,14 @@ DROP DATABASE IF EXISTS `DB`;
 CREATE DATABASE `DB`;
 USE `DB`;
 
-DROP TABLE IF EXISTS `Occurrences`;
-CREATE TABLE `Occurrences` (
-  `IdOccurrence` int NOT NULL AUTO_INCREMENT,
-  `Name` varchar(100) NOT NULL,
-  `Min_probability` double NOT NULL,
-  PRIMARY KEY (`IdOccurrence`)
+DROP TABLE IF EXISTS `subscription`;
+CREATE TABLE `subscription` (
+  `Id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(100) NOT NULL,
+  `subscription_tier` varchar(10) NOT NULL,
+  PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
-INSERT INTO `Occurrences` VALUES (1,'Frequent',20),(2,'Probable',10),(5,'Possible',1),(6,'Rare',0.1),(7,'Remote',0);
+alter table `subscription` add constraint ck_subscription_tier 
+   check (subscription_tier in ('Free', 'Basic', 'Advanced'));
+INSERT INTO `subscription` VALUES 
+(1, 'test', 'Free'), (2, 'premium', 'Advanced');

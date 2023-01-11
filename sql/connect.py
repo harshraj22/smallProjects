@@ -37,8 +37,8 @@ with connection:
 
     with connection.cursor() as cursor:
         # Read a single record
-        sql = "SELECT * FROM Occurrences;"
+        sql = "SELECT * FROM subscription;"
         cursor.execute(sql)
-        result = cursor.fetchone()
+        # result = cursor.fetchone()
         result = cursor.fetchall()
         print(result)
