@@ -11,7 +11,7 @@ jobs:
       - name: Docker Compose Action
         uses: isbang/compose-action@v1.4.1
         with:
-          compose-file: "./kafka-hello-world/docker-compose.yml"
+          compose-file: "kafka-hello-world/docker-compose.yml"
           down-flags: "--volumes"
 
 
