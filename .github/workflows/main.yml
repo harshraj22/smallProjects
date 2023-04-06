@@ -8,6 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Docker Compose Action
         uses: isbang/compose-action@v1.4.1
         with:
