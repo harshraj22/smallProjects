@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Docker Compose Action
-        uses: adambirds/docker-compose-action@v1.4.1
+        uses: adambirds/docker-compose-action@v1.0.0
         with:
           compose-file: "kafka-hello-world/docker-compose.yml"
           down-flags: "--volumes"
