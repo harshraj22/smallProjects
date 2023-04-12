@@ -8,14 +8,43 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Docker Compose Action
-        uses: adambirds/docker-compose-action@v1.2.0
-        with:
-          compose-file: "kafka-hello-world/docker-compose.yml"
-          down-flags: "--volumes"
-          test-container: "ubuntu"
-          test-command: "nc -vz localhost 9092"
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Build and run Docker containers
+        run: docker-compose up -f kafka-hello-world/docker-compose.yml --detach
+      - name: Run integration tests
+        run: |
+          docker-compose run broker nc -vz localhost 9092
+      - name: Tear down Docker containers
+        run: docker-compose down
+        
+#       - uses: actions/checkout@v3
+#       - name: Docker Compose Action
+#         uses: adambirds/docker-compose-action@v1.2.0
+#         with:
+#           compose-file: "kafka-hello-world/docker-compose.yml"
+#           down-flags: "--volumes"
+#           test-container: "ubuntu"
+#           test-command: "nc -vz localhost 9092"
 
 
+# jobs:
+#   integration_test:
+#     runs-on: ubuntu-latest
+#     services:
+#       db:
+#         image: mysql:5.7
+#         env:
+#           MYSQL_ROOT_PASSWORD: root
+#           MYSQL_DATABASE: mydb
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+#       - name: Build and run Docker containers
+#         run: docker-compose up --build --detach
+#       - name: Run integration tests
+#         run: |
+#           docker-compose run myservice pytest tests/integration/
+#       - name: Tear down Docker containers
+#         run: docker-compose down
 
